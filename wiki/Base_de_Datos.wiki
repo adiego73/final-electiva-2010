@@ -1,0 +1,11 @@
+#labels Phase-Design
+#Informacion relacionada con la Base de Datos
+
+= Introduccion =
+
+El motor de Base de Datos utilizado es: SQL Server 2008.<br>
+Ademas, por el momento, el archivo mdf esta en *UIForms\bin\Debug*; sin embargo, en futuras versiones, se deberá colocar en *C:\*
+
+==== Mas Informacion ====
+
+[http://code.google.com/p/final-electiva-2010/wiki/Diagrama_BD Diagrama de Base de Datos]

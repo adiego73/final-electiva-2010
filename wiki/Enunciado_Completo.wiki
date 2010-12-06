@@ -1,0 +1,26 @@
+#labels Phase-Requirements
+=Enunciado Completo=
+
+Un supermercado implementa un sistema de *puntaje* para sus clientes. A los clientes especiales se les otorga *3* puntos por cada cinco pesos gastados en cada compra y a los comunes *1* punto cada 5 pesos. Según los puntos acumulados podrán retirar premios.
+
+===El sistema deberá tener===
+
+*1.* Una aplicación de escritorio que permita:<br>
+ * Administrar Clientes. (ABM)<br>
+ * Administrar premios: ABM. De cada Premio actualizar también los puntos necesarios para solicitarlo y stock<br>
+ * Actualizar puntos acumulados ante cada compra del cliente.<br>
+
+*2.* Una aplicación Web que permita a los clientes:<br>
+ * Consultar el listado de premios con su puntaje requerido.<br>
+ * Consultar por sus puntos acumulados.<br>
+ * Solicitar el o los premios que su puntaje le permite.<br>
+
+*3.* Actualizar base de datos con los cambios realizados por los puntos 1a, 1b, 1c y 2c.<br>
+
+*4.* Informar a un usuario con privilegios, en la aplicación Web:<br>
+ * La cantidad de clientes que eligieron cada premio<br>
+ * El stock de cada premio<br>
+ * La cantidad de clientes que tienen puntos entre rangos:
+  * 0 a 100
+  * 101 a 1000
+  * Más de 1000

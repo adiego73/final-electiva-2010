@@ -1,6 +1,4 @@
 #labels Phase-Design
-#Informacion relacionada con la Base de Datos
-
 = Introduccion =
 
 El motor de Base de Datos utilizado es: SQL Server 2008.<br>

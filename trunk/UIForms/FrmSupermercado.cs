@@ -84,13 +84,14 @@ namespace UIForms
 
             private void lPremio_Click(object sender, EventArgs e)
             {
-                lTitulo.Text = " - Listado de todos los premios - ";
+                lTitulo.Text = " - Listado de PREMIOS - ";
                 lTitulo.TextAlign = ContentAlignment.MiddleCenter;
                 try
                 {
                     this.cargarGridView(ASupermercado.listarTodosLosPremios());
                     DataGridViewLinkColumn lc = new DataGridViewLinkColumn();
                     lc.Name = "EditarPremio";
+                    lc.HeaderText = "";
                     lc.Text = "Editar";
                     lc.UseColumnTextForLinkValue = true;
                     lc.ReadOnly = true;
@@ -114,18 +115,13 @@ namespace UIForms
                 this.lPremio_Click(null, null);
             }
 
-            private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
-            {
-                this.Close();
-            }
-
         //---- Fin Opciones de Premios
 
         //Opciones de menú relacionadas a los Compras ----
 
             private void nCompra_Click(object sender, EventArgs e)
             {
-                lTitulo.Text = " - Listado de clientes activos para agregar una COMPRA - ";
+                lTitulo.Text = " - Seleccion de cliente para la generación de COMPRAS - ";
                 lTitulo.TextAlign = ContentAlignment.MiddleCenter;
                 try
                 {
@@ -149,7 +145,7 @@ namespace UIForms
 
             private void lCompra_Click(object sender, EventArgs e)
             {
-                lTitulo.Text = " - Listado de todos las compras - ";
+                lTitulo.Text = " - Listado de todos las COMPRAS - ";
                 lTitulo.TextAlign = ContentAlignment.MiddleCenter;
                 try
                 {
@@ -167,7 +163,13 @@ namespace UIForms
                         MessageBox.Show(exc.Message);
                 }
             }
+
         //---- Fin Opciones de Compras
+
+            private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                this.Close();
+            }
 
         // Click en el DataGrid ----
         
@@ -187,16 +189,14 @@ namespace UIForms
                     {
                         MessageBox.Show(exc.Message);
                     }
-                }
-
-                if (listadoDG.SelectedCells[0].OwningColumn.Name == "AgregarCompra")
+                }else if (listadoDG.SelectedCells[0].OwningColumn.Name == "AgregarCompra")
                 {
                     try
                     {
                         FrmCompra frmNuevaCompra = new FrmCompra();
                         frmNuevaCompra.Cliente = ASupermercado.traerCliente(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value));
                         frmNuevaCompra.ShowDialog();
-                        this.lCliente_Click(null, null);
+                        this.lCompra_Click(null, null);
                     }
                     catch (ExcepcionGral exc)
                     {

@@ -40,6 +40,8 @@
             this.errCantidadStockLB = new System.Windows.Forms.Label();
             this.errCantidadPuntosLB = new System.Windows.Forms.Label();
             this.errDescripcionLB = new System.Windows.Forms.Label();
+            this.codigoLB1 = new System.Windows.Forms.Label();
+            this.codigoLB2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // abmPremioLB
@@ -55,21 +57,21 @@
             // 
             // cantidadStockTX
             // 
-            this.cantidadStockTX.Location = new System.Drawing.Point(140, 88);
+            this.cantidadStockTX.Location = new System.Drawing.Point(138, 116);
             this.cantidadStockTX.Name = "cantidadStockTX";
             this.cantidadStockTX.Size = new System.Drawing.Size(169, 20);
             this.cantidadStockTX.TabIndex = 27;
             // 
             // cantidadPuntosTX
             // 
-            this.cantidadPuntosTX.Location = new System.Drawing.Point(140, 62);
+            this.cantidadPuntosTX.Location = new System.Drawing.Point(138, 90);
             this.cantidadPuntosTX.Name = "cantidadPuntosTX";
             this.cantidadPuntosTX.Size = new System.Drawing.Size(169, 20);
             this.cantidadPuntosTX.TabIndex = 26;
             // 
             // descripcionTX
             // 
-            this.descripcionTX.Location = new System.Drawing.Point(140, 37);
+            this.descripcionTX.Location = new System.Drawing.Point(138, 65);
             this.descripcionTX.Name = "descripcionTX";
             this.descripcionTX.Size = new System.Drawing.Size(169, 20);
             this.descripcionTX.TabIndex = 25;
@@ -79,7 +81,7 @@
             this.cantidadStockLB.AutoSize = true;
             this.cantidadStockLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cantidadStockLB.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.cantidadStockLB.Location = new System.Drawing.Point(12, 92);
+            this.cantidadStockLB.Location = new System.Drawing.Point(10, 120);
             this.cantidadStockLB.Name = "cantidadStockLB";
             this.cantidadStockLB.Size = new System.Drawing.Size(116, 13);
             this.cantidadStockLB.TabIndex = 23;
@@ -90,7 +92,7 @@
             this.cantidadPuntosLB.AutoSize = true;
             this.cantidadPuntosLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cantidadPuntosLB.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.cantidadPuntosLB.Location = new System.Drawing.Point(12, 65);
+            this.cantidadPuntosLB.Location = new System.Drawing.Point(10, 93);
             this.cantidadPuntosLB.Name = "cantidadPuntosLB";
             this.cantidadPuntosLB.Size = new System.Drawing.Size(122, 13);
             this.cantidadPuntosLB.TabIndex = 22;
@@ -101,7 +103,7 @@
             this.descripcionLB.AutoSize = true;
             this.descripcionLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descripcionLB.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.descripcionLB.Location = new System.Drawing.Point(12, 39);
+            this.descripcionLB.Location = new System.Drawing.Point(10, 67);
             this.descripcionLB.Name = "descripcionLB";
             this.descripcionLB.Size = new System.Drawing.Size(78, 13);
             this.descripcionLB.TabIndex = 21;
@@ -111,7 +113,7 @@
             // 
             this.bCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCancelar.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.bCancelar.Location = new System.Drawing.Point(258, 114);
+            this.bCancelar.Location = new System.Drawing.Point(256, 142);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(75, 23);
             this.bCancelar.TabIndex = 30;
@@ -123,7 +125,7 @@
             // 
             this.bGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bGuardar.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.bGuardar.Location = new System.Drawing.Point(177, 114);
+            this.bGuardar.Location = new System.Drawing.Point(175, 142);
             this.bGuardar.Name = "bGuardar";
             this.bGuardar.Size = new System.Drawing.Size(75, 23);
             this.bGuardar.TabIndex = 29;
@@ -136,7 +138,7 @@
             this.errCantidadStockLB.AutoSize = true;
             this.errCantidadStockLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errCantidadStockLB.ForeColor = System.Drawing.Color.Red;
-            this.errCantidadStockLB.Location = new System.Drawing.Point(318, 92);
+            this.errCantidadStockLB.Location = new System.Drawing.Point(316, 120);
             this.errCantidadStockLB.Name = "errCantidadStockLB";
             this.errCantidadStockLB.Size = new System.Drawing.Size(15, 13);
             this.errCantidadStockLB.TabIndex = 32;
@@ -148,7 +150,7 @@
             this.errCantidadPuntosLB.AutoSize = true;
             this.errCantidadPuntosLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errCantidadPuntosLB.ForeColor = System.Drawing.Color.Red;
-            this.errCantidadPuntosLB.Location = new System.Drawing.Point(318, 65);
+            this.errCantidadPuntosLB.Location = new System.Drawing.Point(316, 93);
             this.errCantidadPuntosLB.Name = "errCantidadPuntosLB";
             this.errCantidadPuntosLB.Size = new System.Drawing.Size(15, 13);
             this.errCantidadPuntosLB.TabIndex = 33;
@@ -160,18 +162,42 @@
             this.errDescripcionLB.AutoSize = true;
             this.errDescripcionLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errDescripcionLB.ForeColor = System.Drawing.Color.Red;
-            this.errDescripcionLB.Location = new System.Drawing.Point(318, 40);
+            this.errDescripcionLB.Location = new System.Drawing.Point(316, 68);
             this.errDescripcionLB.Name = "errDescripcionLB";
             this.errDescripcionLB.Size = new System.Drawing.Size(15, 13);
             this.errDescripcionLB.TabIndex = 34;
             this.errDescripcionLB.Text = "X";
             this.errDescripcionLB.Visible = false;
             // 
+            // codigoLB1
+            // 
+            this.codigoLB1.AutoSize = true;
+            this.codigoLB1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codigoLB1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.codigoLB1.Location = new System.Drawing.Point(8, 42);
+            this.codigoLB1.Name = "codigoLB1";
+            this.codigoLB1.Size = new System.Drawing.Size(78, 13);
+            this.codigoLB1.TabIndex = 35;
+            this.codigoLB1.Text = "Descripción:";
+            // 
+            // codigoLB2
+            // 
+            this.codigoLB2.AutoSize = true;
+            this.codigoLB2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codigoLB2.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.codigoLB2.Location = new System.Drawing.Point(137, 42);
+            this.codigoLB2.Name = "codigoLB2";
+            this.codigoLB2.Size = new System.Drawing.Size(78, 13);
+            this.codigoLB2.TabIndex = 36;
+            this.codigoLB2.Text = "Descripción:";
+            // 
             // FrmPremio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 148);
+            this.ClientSize = new System.Drawing.Size(341, 178);
+            this.Controls.Add(this.codigoLB2);
+            this.Controls.Add(this.codigoLB1);
             this.Controls.Add(this.errDescripcionLB);
             this.Controls.Add(this.errCantidadPuntosLB);
             this.Controls.Add(this.errCantidadStockLB);
@@ -186,6 +212,7 @@
             this.Controls.Add(this.abmPremioLB);
             this.Name = "FrmPremio";
             this.Text = "ABM Premio";
+            this.Load += new System.EventHandler(this.FrmPremio_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +232,7 @@
         private System.Windows.Forms.Label errCantidadStockLB;
         private System.Windows.Forms.Label errCantidadPuntosLB;
         private System.Windows.Forms.Label errDescripcionLB;
+        private System.Windows.Forms.Label codigoLB1;
+        private System.Windows.Forms.Label codigoLB2;
     }
 }

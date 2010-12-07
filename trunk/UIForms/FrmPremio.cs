@@ -29,8 +29,13 @@ namespace UIForms
 
             private void FrmPremio_Load(object sender, EventArgs e)
             {
-                descripcionTX.Enabled = cantidadPuntosTX.Enabled = cantidadStockTX.Enabled = false;
-                bGuardar.Enabled = false;
+                try
+                {
+                    codigoLB1.Text = "Codigo del premio: ";
+                    codigoLB2.Text = Conversiones.AString(ASupermercado.calcularIdPremio());
+                }
+                catch (ExcepcionGral exc)
+                { MessageBox.Show(exc.Message); }
             }
 
             private void bGuardar_Click(object sender, EventArgs e)
@@ -54,7 +59,7 @@ namespace UIForms
                     }
                     else if (!Validaciones.EsInt(cantidadPuntosTX.Text))
                     {
-                        exc.AgregarError("La cantidad de puntos debe ser numérica.");
+                        exc.AgregarError("La cantidad de puntos debe ser un número entero.");
                         errCantidadPuntosLB.Visible = true;
                     }
 
@@ -65,14 +70,14 @@ namespace UIForms
                     }
                     else if (!Validaciones.EsInt(cantidadStockTX.Text))
                     {
-                        exc.AgregarError("La cantidad de stock debe ser numérica.");
+                        exc.AgregarError("La cantidad de stock debe ser un número entero.");
                         errCantidadStockLB.Visible = true;
                     }
 
                     if (exc.TieneErrores)
                         throw exc;
 
-                    premio = new Premio(descripcionTX.Text,Conversiones.AInt(cantidadPuntosTX.Text), Conversiones.AInt(cantidadStockTX.Text));
+                    premio = new Premio(Conversiones.AInt(codigoLB2.Text), descripcionTX.Text,Conversiones.AInt(cantidadPuntosTX.Text), Conversiones.AInt(cantidadStockTX.Text));
                     try
                     {
                         int i = ASupermercado.agregar(premio);
@@ -98,6 +103,5 @@ namespace UIForms
             }
 
         #endregion
-
     }
 }

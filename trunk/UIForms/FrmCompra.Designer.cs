@@ -30,18 +30,17 @@
         {
             this.bCancelar = new System.Windows.Forms.Button();
             this.bGuardar = new System.Windows.Forms.Button();
-            this.codigoTX = new System.Windows.Forms.TextBox();
             this.clienteTX = new System.Windows.Forms.TextBox();
             this.fechaLB = new System.Windows.Forms.Label();
-            this.codigoLB = new System.Windows.Forms.Label();
+            this.codigoLB1 = new System.Windows.Forms.Label();
             this.clienteLB = new System.Windows.Forms.Label();
             this.nuevaCompraLB = new System.Windows.Forms.Label();
             this.importeTX = new System.Windows.Forms.TextBox();
             this.importeLB = new System.Windows.Forms.Label();
-            this.errCodigoLB = new System.Windows.Forms.Label();
             this.errImporteLB = new System.Windows.Forms.Label();
             this.errFechaLB = new System.Windows.Forms.Label();
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
+            this.codigoLB2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bCancelar
@@ -68,16 +67,9 @@
             this.bGuardar.UseVisualStyleBackColor = true;
             this.bGuardar.Click += new System.EventHandler(this.bGuardar_Click);
             // 
-            // codigoTX
-            // 
-            this.codigoTX.Location = new System.Drawing.Point(63, 62);
-            this.codigoTX.Name = "codigoTX";
-            this.codigoTX.Size = new System.Drawing.Size(217, 20);
-            this.codigoTX.TabIndex = 36;
-            // 
             // clienteTX
             // 
-            this.clienteTX.Location = new System.Drawing.Point(63, 37);
+            this.clienteTX.Location = new System.Drawing.Point(63, 62);
             this.clienteTX.Name = "clienteTX";
             this.clienteTX.Size = new System.Drawing.Size(217, 20);
             this.clienteTX.TabIndex = 35;
@@ -93,23 +85,23 @@
             this.fechaLB.TabIndex = 34;
             this.fechaLB.Text = "Fecha:";
             // 
-            // codigoLB
+            // codigoLB1
             // 
-            this.codigoLB.AutoSize = true;
-            this.codigoLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codigoLB.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.codigoLB.Location = new System.Drawing.Point(7, 65);
-            this.codigoLB.Name = "codigoLB";
-            this.codigoLB.Size = new System.Drawing.Size(50, 13);
-            this.codigoLB.TabIndex = 33;
-            this.codigoLB.Text = "Código:";
+            this.codigoLB1.AutoSize = true;
+            this.codigoLB1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codigoLB1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.codigoLB1.Location = new System.Drawing.Point(7, 42);
+            this.codigoLB1.Name = "codigoLB1";
+            this.codigoLB1.Size = new System.Drawing.Size(50, 13);
+            this.codigoLB1.TabIndex = 33;
+            this.codigoLB1.Text = "Código:";
             // 
             // clienteLB
             // 
             this.clienteLB.AutoSize = true;
             this.clienteLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clienteLB.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.clienteLB.Location = new System.Drawing.Point(7, 39);
+            this.clienteLB.Location = new System.Drawing.Point(7, 64);
             this.clienteLB.Name = "clienteLB";
             this.clienteLB.Size = new System.Drawing.Size(50, 13);
             this.clienteLB.TabIndex = 32;
@@ -144,18 +136,6 @@
             this.importeLB.TabIndex = 40;
             this.importeLB.Text = "Importe:";
             // 
-            // errCodigoLB
-            // 
-            this.errCodigoLB.AutoSize = true;
-            this.errCodigoLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errCodigoLB.ForeColor = System.Drawing.Color.Red;
-            this.errCodigoLB.Location = new System.Drawing.Point(286, 65);
-            this.errCodigoLB.Name = "errCodigoLB";
-            this.errCodigoLB.Size = new System.Drawing.Size(15, 13);
-            this.errCodigoLB.TabIndex = 57;
-            this.errCodigoLB.Text = "X";
-            this.errCodigoLB.Visible = false;
-            // 
             // errImporteLB
             // 
             this.errImporteLB.AutoSize = true;
@@ -187,27 +167,38 @@
             this.dtFecha.Size = new System.Drawing.Size(217, 20);
             this.dtFecha.TabIndex = 61;
             // 
-            // FrmNuevaCompra
+            // codigoLB2
+            // 
+            this.codigoLB2.AutoSize = true;
+            this.codigoLB2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codigoLB2.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.codigoLB2.Location = new System.Drawing.Point(123, 42);
+            this.codigoLB2.Name = "codigoLB2";
+            this.codigoLB2.Size = new System.Drawing.Size(50, 13);
+            this.codigoLB2.TabIndex = 62;
+            this.codigoLB2.Text = "Código:";
+            // 
+            // FrmCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(308, 188);
+            this.Controls.Add(this.codigoLB2);
             this.Controls.Add(this.dtFecha);
             this.Controls.Add(this.errFechaLB);
             this.Controls.Add(this.errImporteLB);
-            this.Controls.Add(this.errCodigoLB);
             this.Controls.Add(this.importeTX);
             this.Controls.Add(this.importeLB);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bGuardar);
-            this.Controls.Add(this.codigoTX);
             this.Controls.Add(this.clienteTX);
             this.Controls.Add(this.fechaLB);
-            this.Controls.Add(this.codigoLB);
+            this.Controls.Add(this.codigoLB1);
             this.Controls.Add(this.clienteLB);
             this.Controls.Add(this.nuevaCompraLB);
-            this.Name = "FrmNuevaCompra";
+            this.Name = "FrmCompra";
             this.Text = "FrmNuevaCompra";
+            this.Load += new System.EventHandler(this.FrmCompra_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,17 +208,16 @@
 
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Button bGuardar;
-        private System.Windows.Forms.TextBox codigoTX;
         private System.Windows.Forms.TextBox clienteTX;
         private System.Windows.Forms.Label fechaLB;
-        private System.Windows.Forms.Label codigoLB;
+        private System.Windows.Forms.Label codigoLB1;
         private System.Windows.Forms.Label clienteLB;
         private System.Windows.Forms.Label nuevaCompraLB;
         private System.Windows.Forms.TextBox importeTX;
         private System.Windows.Forms.Label importeLB;
-        private System.Windows.Forms.Label errCodigoLB;
         private System.Windows.Forms.Label errImporteLB;
         private System.Windows.Forms.Label errFechaLB;
         private System.Windows.Forms.DateTimePicker dtFecha;
+        private System.Windows.Forms.Label codigoLB2;
     }
 }

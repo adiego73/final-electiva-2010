@@ -71,6 +71,7 @@ namespace Logic
             public ArrayList pasarAMR()
             {
                 ArrayList arr = new ArrayList();
+                arr.Add(this.Codigo);
                 arr.Add(this.Descripcion);
                 arr.Add(this.CantPuntos);
                 arr.Add(this.CantStock);

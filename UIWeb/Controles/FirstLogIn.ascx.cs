@@ -21,7 +21,7 @@ namespace UIWeb.Controles
         public event EventHandler volver;
         #region Propiedades
 
-            public Usuario usuario
+            public Usuario Usuario
             {
                 get { return (Usuario)Session["Usuario"]; }
             }
@@ -222,7 +222,7 @@ namespace UIWeb.Controles
                     if (err.Icono != "")
                     {
                         Image icono = ((Image)Page.FindControl(err.IconoPB));
-                        icono.ImageUrl = @"../Iconos/" + err.Icono;
+                        icono.ImageUrl = @"../imagenes/Iconos/" + err.Icono;
                         icono.Visible = true;
                     }
                 }

@@ -19,6 +19,7 @@ namespace UIWeb.Controles
     public partial class LogIn : System.Web.UI.UserControl
     {
         public event EventHandler obtenerUsuario;
+        public event EventHandler usuarioIngresado;
 
         #region Propiedades
 
@@ -48,6 +49,10 @@ namespace UIWeb.Controles
                             {
                                 avisoGralLB.Text = "Bienvenido!, " + ((Usuario)Session["Usuario"]).Cliente.Nombre + " " + ((Usuario)Session["Usuario"]).Cliente.Apellido;
                                 avisoGralLB.Visible = true;
+                                if (this.usuarioIngresado != null)
+                                {
+                                    this.usuarioIngresado(null, null);
+                                }
                             }
                             else
                             {
@@ -102,7 +107,7 @@ namespace UIWeb.Controles
                     if (err.Icono != "")
                     {
                         Image icono = ((Image)Page.FindControl(err.IconoPB));
-                        icono.ImageUrl = @"../Iconos/" + err.Icono;
+                        icono.ImageUrl = @"../imagenes/Iconos/" + err.Icono;
                         icono.Visible = true;
                     }
                 }

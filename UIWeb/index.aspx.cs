@@ -16,6 +16,7 @@ namespace UIWeb
     public partial class _Default : System.Web.UI.Page
     {
         #region Eventos
+
             protected void Page_Load(object sender, EventArgs e)
             {
                 Ingreso1.obtenerUsuario += new EventHandler(Ingreso1_obtenerUsuario);
@@ -45,6 +46,7 @@ namespace UIWeb
                 firstLogIn.Visible = true;
                 Ingreso1.Visible = false;
             }
+
             public void Ingreso1_usuarioIngreso(object s, EventArgs e)
             {
                 if (Ingreso1.usuario != null) // No hay usuario definido, por lo tanto, no entro nadie.
@@ -73,7 +75,7 @@ namespace UIWeb
 
             protected void menu_MenuUsuarioClick(object s, MenuEventArgs e)
             {
-                switch (menu.SelectedItem.Value)
+                switch (MenuUsuario.SelectedItem.Value)
                 {
                     case "Completo":
                     //    Response.Redirect("http://google.com/search?q=diego+armando+maradona");
@@ -90,7 +92,6 @@ namespace UIWeb
                     break;
                 }
             }
-
 
         #endregion
 

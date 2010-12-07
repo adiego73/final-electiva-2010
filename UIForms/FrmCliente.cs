@@ -43,7 +43,7 @@ namespace UIForms
                 {
                     if (Validaciones.EsVacio(dniTX.Text))
                         exc.AgregarError("El número de documento no puede ser blanco");
-                    else if (!Validaciones.EsInt(dniTX.Text))
+                    else if (!Validaciones.EsLong(dniTX.Text))
                         exc.AgregarError("El número de documento debe ser numérico");
                     else if (dniTX.Text.Length < 7 || dniTX.Text.Length > 8)
                         exc.AgregarError("El número de documento no es válido. Debe tener 7 u 8 caracteres");
@@ -116,7 +116,7 @@ namespace UIForms
                         exc.AgregarError("El número de documento no puede ser blanco");
                         errDniLB.Visible = true;
                     }
-                    else if (!Validaciones.EsInt(dniTX.Text))
+                    else if (!Validaciones.EsLong(dniTX.Text))
                     {
                         exc.AgregarError("El número de documento debe ser numérico");
                         errDniLB.Visible = true;

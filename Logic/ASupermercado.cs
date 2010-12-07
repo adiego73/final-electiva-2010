@@ -422,6 +422,16 @@ namespace Logic
                 { throw exc; }
             }
 
+            public static int calcularIdPremio()
+            {
+                try
+                {
+                    DBPremio db = new DBPremio();
+                    return db.calcularId();
+                }
+                catch (ExcepcionGral exc)
+                { throw exc; }
+            }
 
             //---- Fin Consultas de Premios
 
@@ -462,6 +472,17 @@ namespace Logic
                         return ASupermercado.cargarCompra(dsCom);
                     else
                         return null;
+                }
+                catch (ExcepcionGral exc)
+                { throw exc; }
+            }
+
+            public static int calcularIdCompra()
+            {
+                try
+                {
+                    DBCompra db = new DBCompra();
+                    return db.calcularId();
                 }
                 catch (ExcepcionGral exc)
                 { throw exc; }

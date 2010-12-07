@@ -68,104 +68,141 @@ namespace Db
 
         #region Consultas
 
-        public DataSet listarTodas()
-        {
-            SqlConnection conn = null;
-            try
+            public DataSet listarTodas()
             {
+                SqlConnection conn = null;
+                try
+                {
+                    try
+                    {
+                        conn = new SqlConnection(DBGeneral.StrConn);
+                        conn.Open();
+                    }
+                    catch (SqlException e)
+                    {
+                        ExcepcionGral exc = new ExcepcionGral();
+                        exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
+                        throw exc;
+                    }
+                    string sql = "SELECT * FROM Compra;";
+
+                    DataSet ds;
+                    ParaDB.EjecutarConsulta(sql, conn, out ds);
+                    conn.Close();
+                    return ds;
+                }
+                catch (ExcepcionGral exc)
+                {
+                    conn.Close();
+                    throw exc;
+                }
+            }
+
+            public bool existe(int cod)
+            {
+                SqlConnection conn = null;
+                try
+                {
+                    try
+                    {
+                        conn = new SqlConnection(DBGeneral.StrConn);
+                        conn.Open();
+                    }
+                    catch (SqlException e)
+                    {
+                        ExcepcionGral exc = new ExcepcionGral();
+                        exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
+                        throw exc;
+                    }
+                    string sql = "SELECT * FROM Compra p WHERE p.COM_Codigo = @Codigo;";
+
+                    Parametros col = new Parametros();
+                    col.Add(Parametros.CargarParametro("@Codigo", TipoDato.Entero, cod));
+
+                    DataSet ds;
+                    ParaDB.EjecutarConsulta(sql, col, conn, out ds);
+                    conn.Close();
+                    if (ds != null && ds.Tables[0].Rows.Count == 0)
+                        return false;
+                    else
+                        return true;
+                }
+                catch (ExcepcionGral exc)
+                {
+                    this.Dispose();
+                    throw exc;
+                }
+            }
+
+            public DataSet traer(int cod)
+            {
+                SqlConnection conn = null;
+                try
+                {
+                    try
+                    {
+                        conn = new SqlConnection(DBGeneral.StrConn);
+                        conn.Open();
+                    }
+                    catch (SqlException e)
+                    {
+                        ExcepcionGral exc = new ExcepcionGral();
+                        exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
+                        throw exc;
+                    }
+                    string sql = "SELECT * FROM Compra WHERE COM_Codigo = @Codigo;";
+
+                    Parametros col = new Parametros();
+                    col.Add(Parametros.CargarParametro("@Codigo", TipoDato.Entero, cod));
+
+                    DataSet ds;
+                    ParaDB.EjecutarConsulta(sql, col, conn, out ds);
+                    conn.Close();
+                    return ds;
+                }
+                catch (ExcepcionGral exc)
+                {
+                    this.Dispose();
+                    throw exc;
+                }
+            }
+
+            public int calcularId()
+            {
+                SqlConnection conn = null;
                 try
                 {
                     conn = new SqlConnection(DBGeneral.StrConn);
                     conn.Open();
                 }
-                catch (SqlException e)
+                catch (SqlException ex)
                 {
                     ExcepcionGral exc = new ExcepcionGral();
-                    exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
+                    exc.AgregarError(ex.Message);
                     throw exc;
                 }
-                string sql = "SELECT * FROM Compra;";
 
-                DataSet ds;
-                ParaDB.EjecutarConsulta(sql, conn, out ds);
-                conn.Close();
-                return ds;
-            }
-            catch (ExcepcionGral exc)
-            {
-                conn.Close();
-                throw exc;
-            }
-        }
-
-        public bool existe(int cod)
-        {
-            SqlConnection conn = null;
-            try
-            {
                 try
                 {
-                    conn = new SqlConnection(DBGeneral.StrConn);
-                    conn.Open();
+                    string sql = "SELECT TOP 1 COM_Codigo FROM Compra ORDER BY COM_Codigo DESC;";
+
+                    DataSet ds;
+                    ParaDB.EjecutarConsulta(sql, conn, out ds);
+
+                    if (ds != null && ds.Tables[0].Rows.Count == 1)
+                    {
+                        int cod = RecuperarAtributo.Entero(ds.Tables[0].Rows[0], "COM_Codigo");
+                        cod++;
+                        return cod;
+                    }
+                    else
+                        return 1;
                 }
-                catch (SqlException e)
+                catch (ExcepcionGral exc)
                 {
-                    ExcepcionGral exc = new ExcepcionGral();
-                    exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
                     throw exc;
                 }
-                string sql = "SELECT * FROM Compra p WHERE p.COM_Codigo = @Codigo;";
-
-                Parametros col = new Parametros();
-                col.Add(Parametros.CargarParametro("@Codigo", TipoDato.Entero, cod));
-
-                DataSet ds;
-                ParaDB.EjecutarConsulta(sql, col, conn, out ds);
-                conn.Close();
-                if (ds != null && ds.Tables[0].Rows.Count == 0)
-                    return false;
-                else
-                    return true;
             }
-            catch (ExcepcionGral exc)
-            {
-                this.Dispose();
-                throw exc;
-            }
-        }
-
-        public DataSet traer(int cod)
-        {
-            SqlConnection conn = null;
-            try
-            {
-                try
-                {
-                    conn = new SqlConnection(DBGeneral.StrConn);
-                    conn.Open();
-                }
-                catch (SqlException e)
-                {
-                    ExcepcionGral exc = new ExcepcionGral();
-                    exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
-                    throw exc;
-                }
-                string sql = "SELECT * FROM Compra WHERE COM_Codigo = @Codigo;";
-
-                Parametros col = new Parametros();
-                col.Add(Parametros.CargarParametro("@Codigo", TipoDato.Entero, cod));
-
-                DataSet ds;
-                ParaDB.EjecutarConsulta(sql, col, conn, out ds);
-                conn.Close();
-                return ds;
-            }
-            catch (ExcepcionGral exc)
-            {
-                this.Dispose();
-                throw exc;
-            }
-        }
 
         #endregion
 

@@ -56,39 +56,27 @@ namespace UIForms
         #endregion
 
         #region Eventos
-            private void FrmNuevaCompra_Load(object sender, EventArgs e)
+
+            private void FrmCompra_Load(object sender, EventArgs e)
             {
+                try
+                {
+                    codigoLB1.Text = "Codigo del compra: ";
+                    codigoLB2.Text = Conversiones.AString(ASupermercado.calcularIdCompra());
+                }
+                catch (ExcepcionGral exc)
+                { MessageBox.Show(exc.Message); }
                 clienteTX.Enabled = false;
-                bGuardar.Enabled = false;
             }
-            
+
             private void bGuardar_Click(object sender, EventArgs e)
             {
-                errCodigoLB.Visible = errFechaLB.Visible = errImporteLB.Visible = false;
+                errFechaLB.Visible = errImporteLB.Visible = false;
                 bool existe = false;
                 ExcepcionGral exc = new ExcepcionGral();
 
                 try
                 {
-                    if (Validaciones.EsVacio(codigoTX.Text))
-                    {
-                        exc.AgregarError("El Código no puede quedar en blanco");
-                        errCodigoLB.Visible = true;
-                    }
-                    else 
-                    {
-                        if (!Validaciones.EsInt(codigoTX.Text))
-                        {
-                            exc.AgregarError("El Código debe ser numérico.");
-                            errCodigoLB.Visible = true;
-                        }
-                        else if (existe = ASupermercado.existeCompra(Conversiones.AInt(codigoTX.Text)))
-                        {
-                            exc.AgregarError("El Código ingresado ya existe.");
-                            errCodigoLB.Visible = true;
-                        }
-                    }
-
                     if (Validaciones.EsVacio(dtFecha.Text))
                     {
                         exc.AgregarError("La Fecha no puede quedar en blanco");
@@ -122,7 +110,7 @@ namespace UIForms
                     if (exc.TieneErrores)
                         throw exc;
 
-                    compra = new Compra(Conversiones.AInt(codigoTX.Text), cliente, Conversiones.AFecha(dtFecha.Text), Conversiones.ADouble(importeTX.Text));
+                    compra = new Compra(Conversiones.AInt(codigoLB2.Text), cliente, Conversiones.AFecha(dtFecha.Text), Conversiones.ADouble(importeTX.Text));
                     try
                     {
                         int i = ASupermercado.agregar(compra);
@@ -151,6 +139,7 @@ namespace UIForms
             }
 
         #endregion
+
 
         
     }

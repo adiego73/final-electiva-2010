@@ -44,16 +44,15 @@ namespace Db
             {
                 try
                 {
-                    int cod = this.calcularId(t);
                     string sql = @"insert into Premio (PRE_Codigo, PRE_Descripcion, PRE_CantPuntos, PRE_CantStock) ";
                            sql += "values (@Codigo, @Descripcion, @CantidadPuntos, @CantidadStock) select SCOPE_IDENTITY(); ";
 
                     Parametros col = new Parametros();
 
-                    col.Add(Parametros.CargarParametro("@Codigo", TipoDato.Entero, cod));
-                    col.Add(Parametros.CargarParametro("@Descripcion", TipoDato.Cadena, arr[0]));
-                    col.Add(Parametros.CargarParametro("@CantidadPuntos", TipoDato.Entero, arr[1]));
-                    col.Add(Parametros.CargarParametro("@CantidadStock", TipoDato.Entero, arr[2]));
+                    col.Add(Parametros.CargarParametro("@Codigo", TipoDato.Entero, arr[0]));
+                    col.Add(Parametros.CargarParametro("@Descripcion", TipoDato.Cadena, arr[1]));
+                    col.Add(Parametros.CargarParametro("@CantidadPuntos", TipoDato.Entero, arr[2]));
+                    col.Add(Parametros.CargarParametro("@CantidadStock", TipoDato.Entero, arr[3]));
 
                     object id = ParaDB.EjecutarConsulta(sql, col, t, "Premio");
                     return Conversiones.AInt(id);
@@ -208,32 +207,41 @@ namespace Db
                 }
             }
 
-            private int calcularId(Transaccion t)
+            public int calcularId()
             {
-                /*
-                 * Este método determina qué Código de Premio tendrá el premio a crear.
-                 */
+                SqlConnection conn = null;
+                try
+                {
+                    conn = new SqlConnection(DBGeneral.StrConn);
+                    conn.Open();
+                }
+                catch (SqlException ex)
+                {
+                    ExcepcionGral exc = new ExcepcionGral();
+                    exc.AgregarError(ex.Message);
+                    throw exc;
+                }
+
                 try
                 {
                     string sql = "SELECT TOP 1 PRE_Codigo FROM Premio ORDER BY PRE_Codigo DESC;";
 
                     DataSet ds;
-                    ParaDB.EjecutarConsulta(sql, t, out ds);
+                    ParaDB.EjecutarConsulta(sql, conn, out ds);
 
                     if (ds != null && ds.Tables[0].Rows.Count == 1)
                     {
                         int cod = RecuperarAtributo.Entero(ds.Tables[0].Rows[0], "PRE_Codigo");
-                        cod++;
+                        cod= cod++;
                         return cod;
                     }
                     else
-                        return 1;
+                        return 0;
                 }
                 catch(ExcepcionGral exc)
                 {
                     throw exc;
                 }
-
             }
 
         #endregion

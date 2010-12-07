@@ -22,15 +22,16 @@
     </style>
     </head>
 <body>
+<div style="padding-left:25%">
     <form id="form1" runat="server" visible="True">
-<table>
+<table style="width:800px">
 <tr>
 <td>
 Aca va el logo que lo voy a poner despues :D
 </td>
 </tr>
 <tr>
-<td>
+<td style="width: 800px; text-align:left">
     <asp:Panel ID="menuPNL" runat="server" BackColor="#CEE0FD" 
         BorderColor="#003366" BorderStyle="Solid" BorderWidth="1px" Width="100%">
         <asp:Menu ID="menu" runat="server" BackColor="#CEE0FD" BorderWidth="0px" 
@@ -103,5 +104,6 @@ Aca va el logo que lo voy a poner despues :D
     </tr>
 </table>
 </form>
+</div>
 </body>
 </html>

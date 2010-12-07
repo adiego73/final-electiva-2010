@@ -31,7 +31,7 @@ namespace UIWeb
                 }
                 else
                 {
-                    this.Ingreso1_usuarioIngreso(null, null);
+                   // this.Ingreso1_usuarioIngreso(null, null);
                 }
             }
 
@@ -47,7 +47,7 @@ namespace UIWeb
             }
             public void Ingreso1_usuarioIngreso(object s, EventArgs e)
             {
-                if (Ingreso1.usuario != null)
+                if (Ingreso1.usuario != null) // No hay usuario definido, por lo tanto, no entro nadie.
                 {
                     if (Ingreso1.usuario.Cliente == null)
                     {
@@ -76,6 +76,7 @@ namespace UIWeb
                 switch (menu.SelectedItem.Value)
                 {
                     case "Completo":
+                    //    Response.Redirect("http://google.com/search?q=diego+armando+maradona");
                         Label1.Text = "COMPLETO";
                     break;
                     case "ConMisPuntos":

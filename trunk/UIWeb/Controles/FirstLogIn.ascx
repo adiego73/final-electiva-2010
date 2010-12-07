@@ -21,7 +21,7 @@
             BorderStyle="Solid" BorderWidth="1px" Width="100%" Font-Bold="False" 
             Font-Names="Arial" Font-Size="Small" ForeColor="#CC0000">
             <img align="right" alt="PASO 1" longdesc="1er paso para generar un usuario" 
-                src="../Iconos/vwicn151.gif" style="width: 22px; height: 18px" /><br />
+                src="../imagenes/Iconos/vwicn151.gif" style="width: 22px; height: 18px" /><br />
             <table align="left" cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="style2">
@@ -78,7 +78,7 @@
     BorderStyle="Solid" BorderWidth="1px" Font-Size="Small" Height="130px" 
     Width="100%">
     <img align="right" alt="PASO 2" longdesc="2do Paso para generar el usuario" 
-        src="../Iconos/vwicn152.gif" style="width: 22px; height: 18px" /><br />
+        src="../imagenes/Iconos/vwicn152.gif" style="width: 22px; height: 18px" /><br />
     <table align="left" float="false" ID="tblCarga" 
         
         style="position: static; right: 145px; table-layout: fixed; border-collapse: separate; border-spacing: inherit; empty-cells: show; margin-right: 0px;">

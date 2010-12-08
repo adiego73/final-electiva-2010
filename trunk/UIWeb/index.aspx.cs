@@ -27,12 +27,6 @@ namespace UIWeb
                 {
                     firstLogIn.Visible = false;
                     Ingreso1.Visible = false;
-                    MenuAdministrador.Visible = false;
-                    MenuUsuario.Visible = false;
-                }
-                else
-                {
-                   // this.Ingreso1_usuarioIngreso(null, null);
                 }
             }
 
@@ -53,13 +47,14 @@ namespace UIWeb
                 {
                     if (Ingreso1.usuario.Cliente == null)
                     {
-                        MenuUsuario.Visible = false;
-                        MenuAdministrador.Visible = true;
+                        // usuario administrador
                     }
                     else
                     {
-                        MenuAdministrador.Visible = false;
-                        MenuUsuario.Visible = true;
+                        // usuario comun.
+                        int id = Logic.ASupermercado.recuperarIdUsuario(Ingreso1.usuario.Cliente.Dni);
+                        int dni = Ingreso1.usuario.Cliente.Dni;
+                        Response.Redirect("indexUsuarioComun.aspx?id=" + id + "&dni=" + dni);
                     }
                 }
             }
@@ -72,27 +67,6 @@ namespace UIWeb
                     firstLogIn.Visible = false;
                 }
             }
-
-            protected void menu_MenuUsuarioClick(object s, MenuEventArgs e)
-            {
-                switch (MenuUsuario.SelectedItem.Value)
-                {
-                    case "Completo":
-                    //    Response.Redirect("http://google.com/search?q=diego+armando+maradona");
-                        Label1.Text = "COMPLETO";
-                    break;
-                    case "ConMisPuntos":
-                        Label1.Text = "CON MIS PUNTOS";
-                    break;
-                    case "Canjear":
-                        Label1.Text = "CANJEAR";
-                    break;
-                    case "MiInformacion":
-                        Label1.Text = "MI INFORMACION";
-                    break;
-                }
-            }
-
         #endregion
 
     }

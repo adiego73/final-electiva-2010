@@ -13,22 +13,17 @@
         #form1
         {
             height: 453px;
-            width: 865px;
+            width: 800px;
         }
-        .style9
-        {
-            width: 135px;
-        }
-    </style>
+        </style>
     </head>
 <body>
-<div style="padding-left:25%">
+<div style="padding-left:25%; width:800px">
     <form id="form1" runat="server" visible="True">
 <table style="width:800px">
 <tr>
 <td>
-Aca va el logo que lo voy a poner despues :D
-</td>
+    <img alt="logo" src="imagenes/logo.jpg" style="width: 802px; height: 100px" /></td>
 </tr>
 <tr>
 <td style="width: 800px; text-align:left">
@@ -67,41 +62,6 @@ Aca va el logo que lo voy a poner despues :D
     </table>
 </td>
 </tr>
-</table>
-<table style="width: 868px">
-<tr>
-<td class="style9">
-    <asp:Menu ID="MenuUsuario" runat="server" onmenuitemclick="menu_MenuUsuarioClick" 
-        Width="117px">
-        <Items>
-            <asp:MenuItem Text="Catalogo" Value="Catalogo" Selectable="False">
-                <asp:MenuItem Text="Completo" Value="Completo"></asp:MenuItem>
-                <asp:MenuItem Text="Con mis Puntos" Value="ConMisPuntos"></asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="Canjear" Value="Canjear"></asp:MenuItem>
-            <asp:MenuItem Text="Mi Informacion" Value="MiInformacion"></asp:MenuItem>
-        </Items>
-    </asp:Menu>
-    <asp:Menu ID="MenuAdministrador" runat="server" Width="117px">
-        <Items>
-            <asp:MenuItem Text="Catalogo" Value="Catalogo">
-                <asp:MenuItem Text="Stock" Value="Stock"></asp:MenuItem>
-                <asp:MenuItem Text="Cantidad de Clientes" Value="CantidadDeClientes">
-                </asp:MenuItem>
-            </asp:MenuItem>
-            <asp:MenuItem Text="Clientes" Value="Clientes">
-                <asp:MenuItem Text="Por Punto" Value="PorPunto"></asp:MenuItem>
-                <asp:MenuItem Text="Por Nombre" Value="PorNombre"></asp:MenuItem>
-            </asp:MenuItem>
-        </Items>
-    </asp:Menu>
-    </td>
-    <td>
-    <div id="contenido">
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-        Contenido del Sitio.</div>
-    </td>
-    </tr>
 </table>
 </form>
 </div>

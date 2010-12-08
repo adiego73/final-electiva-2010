@@ -11,7 +11,7 @@
 namespace UIWeb {
     
     
-    public partial class _Default {
+    public partial class indexUsuarioComun {
         
         /// <summary>
         /// form1 control.
@@ -23,39 +23,48 @@ namespace UIWeb {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// menuPNL control.
+        /// ArbolOpciones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel menuPNL;
+        protected global::System.Web.UI.WebControls.TreeView ArbolOpciones;
         
         /// <summary>
-        /// menu control.
+        /// CatalogoCompleto1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu menu;
+        protected global::UIWeb.Controles.CatalogoCompleto CatalogoCompleto1;
         
         /// <summary>
-        /// Ingreso1 control.
+        /// CatalogoUsuario1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UIWeb.Controles.LogIn Ingreso1;
+        protected global::UIWeb.Controles.CatalogoUsuario CatalogoUsuario1;
         
         /// <summary>
-        /// firstLogIn control.
+        /// Canjear1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UIWeb.Controles.edfirstLogIn firstLogIn;
+        protected global::UIWeb.Controles.Canjear Canjear1;
+        
+        /// <summary>
+        /// Minformacion1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UIWeb.Controles.Minformacion Minformacion1;
     }
 }

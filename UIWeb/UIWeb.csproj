@@ -53,8 +53,12 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controles\Canjear.ascx" />
+    <Content Include="Controles\CatalogoCompleto.ascx" />
+    <Content Include="Controles\CatalogoUsuario.ascx" />
     <Content Include="Controles\FirstLogIn.ascx" />
     <Content Include="Controles\Ingreso.ascx" />
+    <Content Include="Controles\Minformacion.ascx" />
     <Content Include="imagenes\logo.jpg" />
     <Content Include="index.aspx" />
     <Content Include="imagenes\iconos\vwicn001.gif" />
@@ -242,9 +246,31 @@
     <Content Include="imagenes\iconos\vwicn181.gif" />
     <Content Include="imagenes\iconos\vwicn182.gif" />
     <Content Include="imagenes\iconos\vwicn183.gif" />
+    <Content Include="indexUsuarioComun.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controles\Canjear.ascx.cs">
+      <DependentUpon>Canjear.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Canjear.ascx.designer.cs">
+      <DependentUpon>Canjear.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\CatalogoCompleto.ascx.cs">
+      <DependentUpon>CatalogoCompleto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\CatalogoCompleto.ascx.designer.cs">
+      <DependentUpon>CatalogoCompleto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\CatalogoUsuario.ascx.cs">
+      <DependentUpon>CatalogoUsuario.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\CatalogoUsuario.ascx.designer.cs">
+      <DependentUpon>CatalogoUsuario.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\FirstLogIn.ascx.cs">
       <DependentUpon>FirstLogIn.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -259,12 +285,26 @@
     <Compile Include="Controles\Ingreso.ascx.designer.cs">
       <DependentUpon>Ingreso.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\Minformacion.ascx.cs">
+      <DependentUpon>Minformacion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Minformacion.ascx.designer.cs">
+      <DependentUpon>Minformacion.ascx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="indexUsuarioComun.aspx.cs">
+      <DependentUpon>indexUsuarioComun.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="indexUsuarioComun.aspx.designer.cs">
+      <DependentUpon>indexUsuarioComun.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

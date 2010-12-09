@@ -21,7 +21,7 @@ namespace UIWeb.Controles
         protected void Page_Load(object sender, EventArgs e)
         {
             usuario = (Usuario)Session["Usuario"];
-            int puntos = ASupermercado.calcularPuntos(usuario.Cliente);
+            int puntos = ASupermercado.calcularPuntajeTotal(usuario.Cliente);
             this.cargarCatalogoUsuario(puntos);
         }
 

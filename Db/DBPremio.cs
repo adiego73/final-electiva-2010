@@ -45,7 +45,7 @@ namespace Db
                 try
                 {
                     string sql = @"insert into Premio (PRE_Codigo, PRE_Descripcion, PRE_CantPuntos, PRE_CantStock) ";
-                           sql += "values (@Codigo, @Descripcion, @CantidadPuntos, @CantidadStock) select SCOPE_IDENTITY(); ";
+                           sql += "values (@Codigo, @Descripcion, @CantidadPuntos, @CantidadStock, @Estado) select SCOPE_IDENTITY(); ";
 
                     Parametros col = new Parametros();
 
@@ -53,6 +53,8 @@ namespace Db
                     col.Add(Parametros.CargarParametro("@Descripcion", TipoDato.Cadena, arr[1]));
                     col.Add(Parametros.CargarParametro("@CantidadPuntos", TipoDato.Entero, arr[2]));
                     col.Add(Parametros.CargarParametro("@CantidadStock", TipoDato.Entero, arr[3]));
+                    col.Add(Parametros.CargarParametro("@CantidadStock", TipoDato.Entero, arr[4]));
+
 
                     object id = ParaDB.EjecutarConsulta(sql, col, t, "Premio");
                     return Conversiones.AInt(id);
@@ -64,14 +66,16 @@ namespace Db
                 }
             }
 
-            public void eliminar()
+            public void eliminar(int cod)
             {
                 Transaccion t = new Transaccion();
                 try
                 {
                     t.Begin();
-                    string sql = "DELETE FROM Premio;";
-                    ParaDB.EjecutarConsulta(sql, t);
+                    string sql = "UPDATE Premio SET PRE_Estado = 'Inactivo' WHERE PRE_Codigo = @Cod;";                    Parametros col = new Parametros();
+                    col.Add(Parametros.CargarParametro("@Cod", TipoDato.Entero, cod));
+
+                    ParaDB.EjecutarConsulta(sql, col, t);
                     t.Commit();
                 }
                 catch (ExcepcionGral exc)
@@ -86,15 +90,14 @@ namespace Db
                 try
                 {
                     string sql = @"UPDATE Premio ";
-                    sql += "SET PRE_Codigo = @Codigo, PRE_Descripcion = @Descripcion, PRE_CantidadPuntos = @CantidadPuntos, ";
-                    sql += "PRE_CantidadStock = @CantidadStock WHERE PRE_Codigo = @Codigo;";
+                    sql += "SET PRE_Descripcion = @Descripcion, PRE_CantPuntos = @CantPuntos, ";
+                    sql += "PRE_CantStock = @CantStock WHERE PRE_Codigo = @Codigo;";
 
                     Parametros col = new Parametros();
                     col.Add(Parametros.CargarParametro("@Codigo", TipoDato.Entero, arr[0]));
                     col.Add(Parametros.CargarParametro("@Descripcion", TipoDato.Cadena, arr[1]));
-                    col.Add(Parametros.CargarParametro("@CantidadPuntos", TipoDato.Entero, arr[2]));
-                    col.Add(Parametros.CargarParametro("@CantidadStock", TipoDato.Entero, arr[3]));
-
+                    col.Add(Parametros.CargarParametro("@CantPuntos", TipoDato.Entero, arr[2]));
+                    col.Add(Parametros.CargarParametro("@CantStock", TipoDato.Entero, arr[3]));
                     ParaDB.EjecutarConsulta(sql, col, t);
                 }
                 catch(ExcepcionGral exc)
@@ -124,8 +127,7 @@ namespace Db
                         exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
                         throw exc;
                     }
-                    string sql = "SELECT * FROM Premio;";
-
+                    string sql = "SELECT * FROM Premio WHERE PRE_Estado = 'Activo';";
                     DataSet ds;
                     ParaDB.EjecutarConsulta(sql, conn, out ds);
                     conn.Close();
@@ -193,7 +195,7 @@ namespace Db
                     string sql = "SELECT * FROM Premio WHERE PRE_Codigo = @Codigo;";
 
                     Parametros col = new Parametros();
-                    col.Add(Parametros.CargarParametro("@Dni", TipoDato.Entero, cod));
+                    col.Add(Parametros.CargarParametro("@Codigo", TipoDato.Entero, cod));
 
                     DataSet ds;
                     ParaDB.EjecutarConsulta(sql, col, conn, out ds);

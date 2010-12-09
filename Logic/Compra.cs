@@ -14,17 +14,19 @@ namespace Logic
             private Cliente cliente;
             private DateTime fecha;
             private double importe;
+            private int puntaje;
 
         #endregion
 
         #region Constructores
 
-            public Compra(int cod, Cliente cli, DateTime fec, double imp)
+            public Compra(int cod, Cliente cli, DateTime fec, double imp, int punt)
             {
                 this.Codigo = cod;
                 this.Cliente = cli;
                 this.Fecha = fec;
                 this.Importe = imp;
+                this.Puntaje = punt;
             }
 
             public Compra() { }
@@ -57,6 +59,12 @@ namespace Logic
                 set { importe = value; }
             }
 
+            public int Puntaje
+            {
+                get { return puntaje; }
+                set { puntaje = value; }
+            }
+
         #endregion
 
         #region Metodos
@@ -67,6 +75,7 @@ namespace Logic
                 arr.Add(this.Cliente.Dni);
                 arr.Add(this.Fecha);
                 arr.Add(this.Importe);
+                arr.Add(this.Puntaje);
                 return arr;
             }
 

@@ -72,7 +72,6 @@ namespace UIForms
             private void bGuardar_Click(object sender, EventArgs e)
             {
                 errFechaLB.Visible = errImporteLB.Visible = false;
-                bool existe = false;
                 ExcepcionGral exc = new ExcepcionGral();
 
                 try
@@ -110,15 +109,13 @@ namespace UIForms
                     if (exc.TieneErrores)
                         throw exc;
 
-                    compra = new Compra(Conversiones.AInt(codigoLB2.Text), cliente, Conversiones.AFecha(dtFecha.Text), Conversiones.ADouble(importeTX.Text));
+                    int puntaje = ASupermercado.calcularPuntajeCompra(cliente, Conversiones.ADouble(importeTX.Text));
+                    compra = new Compra(Conversiones.AInt(codigoLB2.Text), cliente, Conversiones.AFecha(dtFecha.Text), Conversiones.ADouble(importeTX.Text), puntaje);
                     try
                     {
                         int i = ASupermercado.agregar(compra);
-
-                        MessageBox.Show("La compra se ha guardado con éxito ");
-                        int puntos = ASupermercado.calcularPuntos(cliente);
-                        MessageBox.Show("Puntaje alcanzado al día de la fecha: " + Conversiones.AString(puntos));
-
+                        int puntajeTotal = ASupermercado.calcularPuntajeTotal(cliente);
+                        MessageBox.Show("La compra se ha guardado con éxito " + "\n" + "Puntaje de esta compra: " + Conversiones.AString(puntaje) + "\n" + "Puntaje alcanzado al día de la fecha: " + Conversiones.AString(puntajeTotal));
                         this.Close();
                     }
                     catch (ExcepcionGral ex)
@@ -139,8 +136,6 @@ namespace UIForms
             }
 
         #endregion
-
-
-        
+     
     }
 }

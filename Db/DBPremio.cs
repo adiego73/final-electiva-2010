@@ -44,7 +44,7 @@ namespace Db
             {
                 try
                 {
-                    string sql = @"insert into Premio (PRE_Codigo, PRE_Descripcion, PRE_CantPuntos, PRE_CantStock) ";
+                    string sql = @"insert into Premio (PRE_Codigo, PRE_Descripcion, PRE_CantPuntos, PRE_CantStock, PRE_Estado) ";
                            sql += "values (@Codigo, @Descripcion, @CantidadPuntos, @CantidadStock, @Estado) select SCOPE_IDENTITY(); ";
 
                     Parametros col = new Parametros();
@@ -53,7 +53,7 @@ namespace Db
                     col.Add(Parametros.CargarParametro("@Descripcion", TipoDato.Cadena, arr[1]));
                     col.Add(Parametros.CargarParametro("@CantidadPuntos", TipoDato.Entero, arr[2]));
                     col.Add(Parametros.CargarParametro("@CantidadStock", TipoDato.Entero, arr[3]));
-                    col.Add(Parametros.CargarParametro("@CantidadStock", TipoDato.Entero, arr[4]));
+                    col.Add(Parametros.CargarParametro("@Estado", TipoDato.Cadena, arr[4]));
 
 
                     object id = ParaDB.EjecutarConsulta(sql, col, t, "Premio");
@@ -234,7 +234,7 @@ namespace Db
                     if (ds != null && ds.Tables[0].Rows.Count == 1)
                     {
                         int cod = RecuperarAtributo.Entero(ds.Tables[0].Rows[0], "PRE_Codigo");
-                        cod= cod++;
+                        cod++;
                         return cod;
                     }
                     else

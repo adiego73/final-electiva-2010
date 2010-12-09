@@ -14,7 +14,7 @@ namespace Library.ParaDB
         #region Atributos
 
             private IDbTransaction transaccion;
-            private static string strconn = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Supermercado.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
+            private static string strconn = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Supermercado.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
             private SqlConnection conn;
 
         #endregion

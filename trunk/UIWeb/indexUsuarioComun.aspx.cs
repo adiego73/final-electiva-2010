@@ -19,7 +19,10 @@ namespace UIWeb
         public Usuario usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.ocultarTodo();
+            if (!IsPostBack)
+                this.ocultarTodo();
+            
+
 
             if (Request["dni"] != null && Request["id"] != null && Session["Usuario"] == null)
             {
@@ -31,7 +34,7 @@ namespace UIWeb
             }
             // else el usuario esta en la sesion
             usuario = (Usuario)Session["Usuario"];
-            usuario.ToString();
+
         }
 
         protected void ArbolOpciones_SelectedNodeChanged(object sender, EventArgs e)
@@ -53,6 +56,7 @@ namespace UIWeb
                     break;
                 case "MiInformacion":
                     this.ocultarTodo();
+                    Minformacion1.Visible = true;
                     break;
             }
         }

@@ -174,11 +174,11 @@
             this.codigoLB1.AutoSize = true;
             this.codigoLB1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codigoLB1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.codigoLB1.Location = new System.Drawing.Point(8, 42);
+            this.codigoLB1.Location = new System.Drawing.Point(12, 42);
             this.codigoLB1.Name = "codigoLB1";
-            this.codigoLB1.Size = new System.Drawing.Size(78, 13);
+            this.codigoLB1.Size = new System.Drawing.Size(50, 13);
             this.codigoLB1.TabIndex = 35;
-            this.codigoLB1.Text = "Descripción:";
+            this.codigoLB1.Text = "Código:";
             // 
             // codigoLB2
             // 

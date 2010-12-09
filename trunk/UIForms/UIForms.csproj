@@ -66,6 +66,12 @@
     <Compile Include="FrmCompra.Designer.cs">
       <DependentUpon>FrmCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPremioEdicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPremioEdicion.Designer.cs">
+      <DependentUpon>FrmPremioEdicion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPremio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCompra.resx">
       <DependentUpon>FrmCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPremioEdicion.resx">
+      <DependentUpon>FrmPremioEdicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPremio.resx">
       <DependentUpon>FrmPremio.cs</DependentUpon>

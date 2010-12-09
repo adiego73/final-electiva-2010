@@ -197,6 +197,18 @@ namespace Logic
                 }
             }
 
+            public static void eliminarPremio(int cod)
+            {
+                try
+                {
+                    DBPremio db = new DBPremio();
+                    db.eliminar(cod);
+                    db.Dispose();
+                }
+                catch (ExcepcionGral exc)
+                { throw exc; }
+            }
+
         //---- Fin ABM de Premios
 
         //ABM de Premios ---- Jessi 05/12
@@ -488,6 +500,16 @@ namespace Logic
                 { throw exc; }
             }
 
+            public static int calcularPuntajeTotal(Cliente cli)
+            {
+                DBCompra dbCom = new DBCompra();
+                int puntosCompra = dbCom.sumarPuntaje(cli.Dni);
+                DBCanje dbCan = new DBCanje();
+                int puntosCanje = dbCan.sumarPuntaje(cli.Dni);
+                int puntajeTotal = puntosCompra - puntosCanje;
+                return puntajeTotal;
+            }
+
             //---- Fin Consultas de Compras
             
         #endregion
@@ -556,7 +578,8 @@ namespace Logic
                     pre.Descripcion = RecuperarAtributo.Cadena(r, "PRE_Descripcion");
                     pre.CantPuntos = RecuperarAtributo.Entero(r, "PRE_CantPuntos");
                     pre.CantStock = RecuperarAtributo.Entero(r, "PRE_CantStock");
-                    pre = new Premio(pre.Codigo, pre.Descripcion, pre.CantPuntos, pre.CantStock);
+                    pre.Estado = RecuperarAtributo.Cadena(r, "PRE_Estado");
+                    pre = new Premio(pre.Codigo, pre.Descripcion, pre.CantPuntos, pre.CantStock, pre.Estado);
                     premios.Add(pre);
                 }
 
@@ -577,7 +600,8 @@ namespace Logic
                     com.Cliente = ASupermercado.traerCliente(dni);
                     com.Fecha = RecuperarAtributo.Fecha(r, "COM_Fecha");
                     com.Importe = RecuperarAtributo.Decimal(r, "COM_Importe");
-                    com = new Compra(com.Codigo, com.Cliente, com.Fecha, com.Importe);
+                    com.Puntaje = RecuperarAtributo.Entero(r, "COM_Puntaje");
+                    com = new Compra(com.Codigo, com.Cliente, com.Fecha, com.Importe, com.Puntaje);
                     compras.Add(com);
                 }
 
@@ -613,8 +637,8 @@ namespace Logic
                 DataRow r = ds.Tables[0].Rows[0];
                 pre.Codigo = RecuperarAtributo.Entero(r, "PRE_Codigo");
                 pre.Descripcion = RecuperarAtributo.Cadena(r, "PRE_Descripcion");
-                pre.CantPuntos = RecuperarAtributo.Entero(r, "PRE_CantidadPuntos");
-                pre.CantStock = RecuperarAtributo.Entero(r, "PRE_CantidadStock");
+                pre.CantPuntos = RecuperarAtributo.Entero(r, "PRE_CantPuntos");
+                pre.CantStock = RecuperarAtributo.Entero(r, "PRE_CantStock");
                 return pre;
                 //Premio pre = null;
                 //DataRow r = ds.Tables[0].Rows[0];
@@ -668,18 +692,10 @@ namespace Logic
 
         #region Metodos extra
 
-            public static int calcularPuntos(Cliente cli)
+            public static int calcularPuntajeCompra(Cliente cli, double importe)
             {
-                double total = 0;
-                DBCompra db = new DBCompra();
-                DataSet ds = db.listarTodas();
-                foreach (DataRow r in ds.Tables[0].Rows)
-                {
-                    if (cli.Dni == (RecuperarAtributo.Entero(r, "CLI_Dni")))
-                        total += (RecuperarAtributo.Decimal(r, "COM_Importe"));
-                }
-                int puntos = cli.calcularPuntos(total);
-                return puntos;
+                int puntaje = cli.calcularPuntos(importe);
+                return puntaje;
             }
 
         #endregion

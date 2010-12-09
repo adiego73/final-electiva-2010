@@ -14,17 +14,19 @@ namespace Logic
             private string descripcion;
             private int cantidadPuntos;
             private int cantidadStock;
+            private string estado;
 
         #endregion
 
         #region Constructores
 
-            public Premio(int cod, string desc, int puntos, int stock)
+            public Premio(int cod, string desc, int puntos, int stock, string est)
             {
                 this.Codigo = cod;
                 this.Descripcion = desc;
                 this.CantPuntos = puntos;
                 this.CantStock = stock;
+                this.Estado = est;
             }
 
             public Premio(string desc, int puntos, int stock)
@@ -64,6 +66,12 @@ namespace Logic
                 set { cantidadStock = value; }
             }
 
+            public string Estado
+            {
+                get { return estado; }
+                set { estado = value; }
+            }
+
         #endregion
 
         #region Metodos
@@ -75,6 +83,7 @@ namespace Logic
                 arr.Add(this.Descripcion);
                 arr.Add(this.CantPuntos);
                 arr.Add(this.CantStock);
+                arr.Add(this.Estado);
                 return arr;
             }
 

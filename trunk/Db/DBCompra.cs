@@ -44,8 +44,8 @@ namespace Db
         {
             try
             {
-                string sql = @"insert into Compra (COM_Codigo, CLI_Dni, COM_Fecha, COM_Importe) ";
-                sql += "values (@Codigo, @Dni, @Fecha, @Importe) select SCOPE_IDENTITY(); ";
+                string sql = @"insert into Compra (COM_Codigo, CLI_Dni, COM_Fecha, COM_Importe, COM_Puntaje) ";
+                sql += "values (@Codigo, @Dni, @Fecha, @Importe, @Puntaje) select SCOPE_IDENTITY(); ";
 
                 Parametros col = new Parametros();
 
@@ -53,6 +53,7 @@ namespace Db
                 col.Add(Parametros.CargarParametro("@Dni", TipoDato.Entero, arr[1]));
                 col.Add(Parametros.CargarParametro("@Fecha", TipoDato.Fecha, arr[2]));
                 col.Add(Parametros.CargarParametro("@Importe", TipoDato.Decimal, arr[3]));
+                col.Add(Parametros.CargarParametro("@Puntaje", TipoDato.Entero, arr[4]));
 
                 object id = ParaDB.EjecutarConsulta(sql, col, t, "Compra");
                 return Conversiones.AInt(id);
@@ -200,6 +201,42 @@ namespace Db
                 }
                 catch (ExcepcionGral exc)
                 {
+                    throw exc;
+                }
+            }
+
+            public int sumarPuntaje(int dni)
+            {
+                SqlConnection conn = null;
+                try
+                {
+                    try
+                    {
+                        conn = new SqlConnection(DBGeneral.StrConn);
+                        conn.Open();
+                    }
+                    catch (SqlException e)
+                    {
+                        ExcepcionGral exc = new ExcepcionGral();
+                        exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
+                        throw exc;
+                    }
+                    string sql = "SELECT SUM(COM_Puntaje) as PuntajeTotal FROM Compra WHERE CLI_Dni = @Dni;";
+
+                    Parametros col = new Parametros();
+                    col.Add(Parametros.CargarParametro("@Dni", TipoDato.Entero, dni));
+                    object rta = ParaDB.EjecutarConsulta(sql, col, conn);
+                    int puntaje;
+                    if (Validaciones.EsVacio(rta))
+                        puntaje = 0;
+                    else
+                        puntaje = Conversiones.AInt(rta);
+                    conn.Close();
+                    return puntaje;
+                }
+                catch (ExcepcionGral exc)
+                {
+                    this.Dispose();
                     throw exc;
                 }
             }

@@ -175,7 +175,7 @@ namespace UIForms
         
             private void listadoDG_CellContentClick(object sender, DataGridViewCellEventArgs e)
             {
-                
+
                 if (listadoDG.SelectedCells[0].OwningColumn.Name == "EditarCliente")
                 {
                     try
@@ -189,18 +189,29 @@ namespace UIForms
                     {
                         MessageBox.Show(exc.Message);
                     }
-                }else if (listadoDG.SelectedCells[0].OwningColumn.Name == "AgregarCompra")
+                }
+                else
                 {
-                    try
+                    if (listadoDG.SelectedCells[0].OwningColumn.Name == "AgregarCompra")
                     {
-                        FrmCompra frmNuevaCompra = new FrmCompra();
-                        frmNuevaCompra.Cliente = ASupermercado.traerCliente(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value));
-                        frmNuevaCompra.ShowDialog();
-                        this.lCompra_Click(null, null);
+                        try
+                        {
+                            FrmCompra frmNuevaCompra = new FrmCompra();
+                            frmNuevaCompra.Cliente = ASupermercado.traerCliente(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value));
+                            frmNuevaCompra.ShowDialog();
+                            this.lCompra_Click(null, null);
+                        }
+                        catch (ExcepcionGral exc)
+                        {
+                            MessageBox.Show(exc.Message);
+                        }
                     }
-                    catch (ExcepcionGral exc)
+                    else if (listadoDG.SelectedCells[0].OwningColumn.Name == "EditarPremio")
                     {
-                        MessageBox.Show(exc.Message);
+                        FrmPremioEdicion frmEditarPre = new FrmPremioEdicion();
+                        frmEditarPre.Premio = ASupermercado.traerPremio(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Codigo"].Value));
+                        frmEditarPre.ShowDialog();
+                        this.lPremio_Click(null, null);
                     }
                 }
             }

@@ -16,7 +16,7 @@ namespace UIWeb
 {
     public partial class indexUsuarioComun : System.Web.UI.Page
     {
-        Usuario usuario;
+        public Usuario usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
             this.ocultarTodo();
@@ -40,10 +40,14 @@ namespace UIWeb
             {
                 case "Completo":
                     this.ocultarTodo();
-                    break;
+                    CatalogoCompleto1.Visible = true;
+
+                break;
                 case "ConMisPuntos":
                     this.ocultarTodo();
-                    break;
+                    CatalogoUsuario1.Visible = true;
+
+                break;
                 case "Canjear":
                     this.ocultarTodo();
                     break;

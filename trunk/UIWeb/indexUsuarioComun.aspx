@@ -5,6 +5,7 @@
 <%@ Register Src="Controles/CatalogoUsuario.ascx" TagName="CatalogoUsuario" TagPrefix="uc2" %>
 <%@ Register Src="Controles/Canjear.ascx" TagName="Canjear" TagPrefix="uc3" %>
 <%@ Register Src="Controles/Minformacion.ascx" TagName="Minformacion" TagPrefix="uc4" %>
+<%@ Register src="Controles/MisPremios.ascx" tagname="MisPremios" tagprefix="uc5" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -44,6 +45,7 @@
                                     <asp:TreeNode Text="Con Mis Puntos" Value="ConMisPuntos"></asp:TreeNode>
                                 </asp:TreeNode>
                                 <asp:TreeNode Text="Canjear" Value="Canjear"></asp:TreeNode>
+                                <asp:TreeNode Text="Mis Premios" Value="MisPremios"></asp:TreeNode>
                                 <asp:TreeNode Text="Mi Informacion" Value="MiInformacion"></asp:TreeNode>
                             </Nodes>
                             <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="5px"
@@ -55,6 +57,7 @@
                         <uc2:CatalogoUsuario ID="CatalogoUsuario1" runat="server" />
                         <uc3:Canjear ID="Canjear1" runat="server" />
                         <uc4:Minformacion ID="Minformacion1" runat="server" />
+                        <uc5:MisPremios ID="MisPremios1" runat="server" />
                     </td>
                 </tr>
             </table>

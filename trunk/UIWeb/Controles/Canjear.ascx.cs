@@ -36,7 +36,6 @@ namespace UIWeb.Controles
         {
             try
             {
-                TextBox1.Text = "se apreto el botonete " + cCatalogo.SelectedRow.Cells[1].Text;
                 int idPremio = Conversiones.AInt(cCatalogo.SelectedRow.Cells[1].Text);
                 ASupermercado.canjearPremio(idPremio, usuario.Cliente);
                 this.Submit_Click(null, null);// simulo el click

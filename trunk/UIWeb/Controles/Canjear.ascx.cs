@@ -54,9 +54,9 @@ namespace UIWeb.Controles
             {
                 if (p.CantPuntos <= pts)
                 {
-                    Button b = new Button();
-                    b.Text = "Canjear";
-                    b.Click += new EventHandler(Click_Canjear);
+                    //Button b = new Button();
+                    //b.Text = "Canjear";
+                    //b.Click += new EventHandler(Click_Canjear);
 
                     listaPremios.Rows.Add(new Object[] { "" });
                     listaPremios.Rows[i].SetField("Codigo", p.Codigo);
@@ -70,10 +70,16 @@ namespace UIWeb.Controles
             //Asocia la tabla al gridview
             cCatalogo.DataSource = listaPremios;
             cCatalogo.DataBind();
+            CommandField cf = new CommandField();
+            cf.ButtonType = ButtonType.Button;
+            cf.ShowSelectButton = true;
+            cf.SelectText = "Canjear";
+            cCatalogo.Columns.Add(cf);
         }
 
         private void completarCatalogo()
         {
+            cCatalogo.Columns.Clear();
             cCatalogo.DataSource = null;
             DataTable listaPremios = new DataTable();
             int i = 0;
@@ -83,16 +89,16 @@ namespace UIWeb.Controles
             listaPremios.Columns.Add("Descripcion");
             listaPremios.Columns.Add("Puntos");
             listaPremios.Columns.Add("Stock");
-            listaPremios.Columns.Add("Canjear");
+            //listaPremios.Columns.Add("Canjear");
 
             List<Premio> alPremios = ASupermercado.listarTodosLosPremios();
 
             foreach (Premio p in alPremios)
             {
-                Button b = new Button();
-                b.Text = "<input type='button' value='mierda'>";
-                //b.Click += new EventHandler(Click_Canjear);
-                b.Attributes.Add("OnClick", "Click_Canjear");
+                //Button b = new Button();
+                //b.Text = "<input type='button' value='mierda'>";
+                ////b.Click += new EventHandler(Click_Canjear);
+                //b.Attributes.Add("OnClick", "Click_Canjear");
 
                /* StringWriter stringWriter = new StringWriter();
                 HtmlTextWriter htmlWriter = new HtmlTextWriter(stringWriter);
@@ -104,17 +110,27 @@ namespace UIWeb.Controles
                 listaPremios.Rows[i].SetField("Descripcion", p.Descripcion);
                 listaPremios.Rows[i].SetField("Puntos", p.CantPuntos);
                 listaPremios.Rows[i].SetField("Stock", p.CantStock);
-                listaPremios.Rows[i].SetField("Canjear", b.Text);
+                //listaPremios.Rows[i].SetField("Canjear", b.Text);
                 i++;
             }
             //Asocia la tabla al gridview
             cCatalogo.DataSource = listaPremios;
             cCatalogo.DataBind();
+            CommandField cf = new CommandField();
+            cf.ButtonType = ButtonType.Button;
+            cf.ShowSelectButton = true;
+            cf.SelectText = "Canjear";
+            cCatalogo.Columns.Add(cf);
         }
 
         protected void Submit_Click(object sender, EventArgs e)
         {
             TextBox1.Text = "submit";
+        }
+
+        protected void cCatalogo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TextBox1.Text = cCatalogo.SelectedRow.Cells[1].Text;
         }
     }
 }

@@ -17,7 +17,7 @@
         
 </div>
 <asp:GridView ID="cCatalogo" runat="server" BorderStyle="Solid" Width="649px" 
-    BorderWidth="1px">
+    BorderWidth="1px" onselectedindexchanged="cCatalogo_SelectedIndexChanged">
     <RowStyle BorderStyle="Solid" BackColor="#CCFFCC" BorderWidth="1px" 
         Height="15px" />
     <SelectedRowStyle BorderStyle="None" />

@@ -11,7 +11,7 @@ using System.Data;
 
 namespace Db
 {
-    public class DBPremio
+    public class DBPremio : IDBConsultas
     {
         #region Atributos
         
@@ -72,10 +72,28 @@ namespace Db
                 try
                 {
                     t.Begin();
-                    string sql = "UPDATE Premio SET PRE_Estado = 'Inactivo' WHERE PRE_Codigo = @Cod;";                    Parametros col = new Parametros();
+                    string sql = "UPDATE Premio SET PRE_Estado = 'Inactivo' WHERE PRE_Codigo = @Cod;";                    
+                    Parametros col = new Parametros();
                     col.Add(Parametros.CargarParametro("@Cod", TipoDato.Entero, cod));
 
                     ParaDB.EjecutarConsulta(sql, col, t);
+                    t.Commit();
+                }
+                catch (ExcepcionGral exc)
+                {
+                    t.Rollback();
+                    throw exc;
+                }
+            }
+
+            public void eliminar()
+            {
+                Transaccion t = new Transaccion();
+                try
+                {
+                    t.Begin();
+                    string sql = "DELETE FROM Premio;";
+                    ParaDB.EjecutarConsulta(sql, t);
                     t.Commit();
                 }
                 catch (ExcepcionGral exc)

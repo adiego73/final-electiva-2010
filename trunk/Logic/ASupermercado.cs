@@ -243,9 +243,18 @@ namespace Logic
             {
                 try
                 {
+                    DBPremio dbPre = new DBPremio();
+                    dbPre.eliminar();
+                    dbPre.Dispose();
                     DBUsuario dbusr = new DBUsuario();
                     dbusr.eliminar();
                     dbusr.Dispose();
+                    DBCompra dbCom = new DBCompra();
+                    dbCom.eliminar();
+                    dbCom.Dispose();
+                    DBCanje dbCan = new DBCanje();
+                    dbCan.eliminar();
+                    dbCan.Dispose();
                     DBCliente db = new DBCliente();
                     db.eliminar();
                     db.Dispose();
@@ -262,31 +271,29 @@ namespace Logic
                 if (ASupermercado.calcularPuntajeTotal(cliente) >= p.CantPuntos && p.CantStock > 0)
                 {
                     // aca tengo que elimiar 1 del premio, crear el canje
-
+                    Transaccion t = new Transaccion();
                     try
                     {
-                        DBCanje dbCanje = new DBCanje();
-                        DBPremio dbPremio = new DBPremio();
+                        t.Begin();
 
                         Canje c = new Canje(10, cliente, p, DateTime.Now);
 
                         ArrayList al = c.pasarAMR();
                         p.CantStock -= 1; // resto uno al stock
                         ArrayList alPremio = p.pasarAMR();
-                        Transaccion t = new Transaccion();
-                        t.Begin();
 
+
+                        DBCanje dbCanje = new DBCanje();
                         dbCanje.agregar(al, t); // agrega el canje a la base de datos
                         dbCanje.Dispose();
-                        t.Commit();
-
-                        t.Begin();
+                        DBPremio dbPremio = new DBPremio();
                         dbPremio.modificar(alPremio, t);
                         dbPremio.Dispose();
                         t.Commit();
                     }
                     catch (ExcepcionGral exc)
                     {
+                        t.Rollback();
                         throw exc;
                     }
 

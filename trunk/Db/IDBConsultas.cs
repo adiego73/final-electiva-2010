@@ -13,8 +13,5 @@ namespace Db
     {
         int agregar(ArrayList arr,  Transaccion t);
         void eliminar();
-        //void modificar(ArrayList arr, ExcepcionGral exc);
-        //DataSet listarTodos();
-        //bool verificarExistencia(int cod);
     }
 }

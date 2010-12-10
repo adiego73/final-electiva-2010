@@ -11,7 +11,7 @@ using System.Data;
 
 namespace Db
 {
-    public class DBCompra
+    public class DBCompra : IDBConsultas 
     {
         #region Atributos
         
@@ -61,6 +61,23 @@ namespace Db
             catch (ExcepcionGral exc)
             {
                 this.Dispose();
+                throw exc;
+            }
+        }
+
+        public void eliminar()
+        {
+            Transaccion t = new Transaccion();
+            try
+            {
+                t.Begin();
+                string sql = "DELETE FROM Compra;";
+                ParaDB.EjecutarConsulta(sql, t);
+                t.Commit();
+            }
+            catch (ExcepcionGral exc)
+            {
+                t.Rollback();
                 throw exc;
             }
         }

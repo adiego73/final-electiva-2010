@@ -22,6 +22,7 @@ namespace UIWeb
                 Ingreso1.obtenerUsuario += new EventHandler(Ingreso1_obtenerUsuario);
                 firstLogIn.volver += new EventHandler(firstLogIn_volver);
                 Ingreso1.usuarioIngresado += new EventHandler(Ingreso1_usuarioIngreso);
+                firstLogIn.usuarioIngresado += new EventHandler(Ingreso1_usuarioIngreso);
 
                 if (!this.IsPostBack) // esto es la primera vez que entra al sitio. Notese el !
                 {

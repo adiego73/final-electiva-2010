@@ -33,8 +33,12 @@ namespace UIWeb.Controles
 
             protected void Page_Load(object sender, EventArgs e)
             {
-                if(!this.IsPostBack)
+                introLB.Text = "Para registrar o recuperar su usuario debe ingresar su DNI y su número de usuario.";
+                introLB.Visible = true;
+                if (!this.IsPostBack)
+                {
                     pnlCargaUsuario.Visible = false;
+                }
             }
 
             protected void bSiguiente_Click(object sender, EventArgs e)

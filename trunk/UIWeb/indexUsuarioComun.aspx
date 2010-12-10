@@ -39,7 +39,7 @@
                             <SelectedNodeStyle Font-Underline="True" ForeColor="#000000" Font-Bold="true" HorizontalPadding="0px"
                                 VerticalPadding="0px" />
                             <Nodes>
-                                <asp:TreeNode Text="Catalogo" Value="Catalogo">
+                                <asp:TreeNode Text="Catalogo" Value="Catalogo" SelectAction="Expand">
                                     <asp:TreeNode Text="Completo" Value="Completo"></asp:TreeNode>
                                     <asp:TreeNode Text="Con Mis Puntos" Value="ConMisPuntos"></asp:TreeNode>
                                 </asp:TreeNode>

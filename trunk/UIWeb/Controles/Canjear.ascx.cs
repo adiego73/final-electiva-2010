@@ -21,24 +21,42 @@ namespace UIWeb.Controles
 {
     public partial class Canjear : System.Web.UI.UserControl
     {
-        // public event EventHandler canjearClick;
         public Usuario usuario;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //canjearClick += new EventHandler(Click_Canjear);
-
+            lExcepciones.Visible = false;
             usuario = (Usuario)Session["Usuario"];
+
             if (!IsPostBack)
                 this.completarCatalogo(ASupermercado.calcularPuntajeTotal(usuario.Cliente));
         }
 
         public void Click_Canjear(object o, EventArgs e)
         {
-            TextBox1.Text = "se apreto el botonete " + cCatalogo.SelectedRow.Cells[1].Text;
-            int idPremio =  Conversiones.AInt(cCatalogo.SelectedRow.Cells[1].Text);
-            ASupermercado.canjearPremio(idPremio, usuario.Cliente);
-            
+            try
+            {
+                TextBox1.Text = "se apreto el botonete " + cCatalogo.SelectedRow.Cells[1].Text;
+                int idPremio = Conversiones.AInt(cCatalogo.SelectedRow.Cells[1].Text);
+                ASupermercado.canjearPremio(idPremio, usuario.Cliente);
+                this.Submit_Click(null, null);// simulo el click
+
+                lExcepciones.Visible = true;
+                lExcepciones.Text = "El premio se canjeo correctamente. Felicitaciones!!";
+                lExcepciones.ForeColor = new System.Drawing.Color();
+                lExcepciones.ForeColor = System.Drawing.ColorTranslator.FromHtml("#46FF96");
+                lExcepciones.BackColor = new System.Drawing.Color();
+                lExcepciones.BackColor = System.Drawing.ColorTranslator.FromHtml("#333333");
+            }
+            catch (ExcepcionGral ex)
+            {
+                lExcepciones.Visible = true;
+                lExcepciones.Text = ex.Message;
+                lExcepciones.ForeColor = new System.Drawing.Color();
+                lExcepciones.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                lExcepciones.BackColor = new System.Drawing.Color();
+                lExcepciones.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+            }
         }
 
         private void completarCatalogo(int pts)
@@ -52,7 +70,6 @@ namespace UIWeb.Controles
             listaPremios.Columns.Add("Descripcion");
             listaPremios.Columns.Add("Puntos");
             listaPremios.Columns.Add("Stock");
-            listaPremios.Columns.Add("Canjear");
 
             List<Premio> alPremios = ASupermercado.listarTodosLosPremios();
 
@@ -60,16 +77,11 @@ namespace UIWeb.Controles
             {
                 if (p.CantPuntos <= pts)
                 {
-                    //Button b = new Button();
-                    //b.Text = "Canjear";
-                    //b.Click += new EventHandler(Click_Canjear);
-
                     listaPremios.Rows.Add(new Object[] { "" });
                     listaPremios.Rows[i].SetField("Codigo", p.Codigo);
                     listaPremios.Rows[i].SetField("Descripcion", p.Descripcion);
                     listaPremios.Rows[i].SetField("Puntos", p.CantPuntos);
                     listaPremios.Rows[i].SetField("Stock", p.CantStock);
-                    listaPremios.Rows[i].SetField("Canjear", "catalogo");
                     i++;
                 }
             }
@@ -99,7 +111,6 @@ namespace UIWeb.Controles
             listaPremios.Columns.Add("Descripcion");
             listaPremios.Columns.Add("Puntos");
             listaPremios.Columns.Add("Stock");
-            //listaPremios.Columns.Add("Canjear");
 
             List<Premio> alPremios = ASupermercado.listarTodosLosPremios();
 

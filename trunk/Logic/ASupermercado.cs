@@ -283,13 +283,13 @@ namespace Logic
                         p.CantStock -= 1; // resto uno al stock
                         ArrayList alPremio = p.pasarAMR();
 
-
                         DBCanje dbCanje = new DBCanje();
                         dbCanje.agregar(al, t); // agrega el canje a la base de datos
                         dbCanje.Dispose();
                         DBPremio dbPremio = new DBPremio();
                         dbPremio.modificar(alPremio, t);
                         dbPremio.Dispose();
+
                         t.Commit();
                     }
                     catch (ExcepcionGral exc)

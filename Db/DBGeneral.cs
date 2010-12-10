@@ -13,6 +13,7 @@ namespace Db
 
         #region Atributos
 
+        
         private static string strconn = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Supermercado.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
         private SqlConnection conn;
 

@@ -23,6 +23,7 @@ namespace UIWeb.Controles
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            lException.Visible = false;
             usuario = (Usuario)Session["Usuario"];
 
             if (!IsPostBack)
@@ -54,6 +55,8 @@ namespace UIWeb.Controles
             {
                 ASupermercado.modificar(usuario);
                 ASupermercado.modificar(usuario.Cliente);
+                
+                lException.Visible = true;
                 lException.Text = "La informacion se modifico correctamente.";
                 lException.ForeColor = new System.Drawing.Color();
                 lException.ForeColor = System.Drawing.ColorTranslator.FromHtml("#46FF96");
@@ -62,9 +65,12 @@ namespace UIWeb.Controles
             }
             catch (ExcepcionGral exc)
             {
+                lException.Visible = true;
                 lException.Text = exc.Message;
                 lException.ForeColor = new System.Drawing.Color();
                 lException.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                lException.BackColor = new System.Drawing.Color();
+                lException.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
             }
         }
     }

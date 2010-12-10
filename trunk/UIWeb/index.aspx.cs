@@ -23,11 +23,15 @@ namespace UIWeb
                 firstLogIn.volver += new EventHandler(firstLogIn_volver);
                 Ingreso1.usuarioIngresado += new EventHandler(Ingreso1_usuarioIngreso);
                 firstLogIn.usuarioIngresado += new EventHandler(Ingreso1_usuarioIngreso);
-
+                introLB.Text = "Bienvenido al sistema de Puntajes de Gorilla Market!" + "\r\n" + "\r\n";
+                introLB.Text += "Para comenzar a utilizar nuestro sistema debe ingresar con su usuario y contraseña." + "\r\n" + "\r\n";
+                introLB.Text += "Si aún no dispone de un usuario, en la sección de login podrá generarlo.";
+                introLB.Visible = true;
                 if (!this.IsPostBack) // esto es la primera vez que entra al sitio. Notese el !
                 {
                     firstLogIn.Visible = false;
                     Ingreso1.Visible = false;
+
                 }
             }
 

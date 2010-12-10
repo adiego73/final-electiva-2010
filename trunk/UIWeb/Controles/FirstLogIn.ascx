@@ -15,18 +15,26 @@
     {
         width: 150px;
     }
+    .style9
+    {
+        width: 160px;
+    }
     </style>
-    <div>
-        <asp:Panel ID="userPNL" runat="server" BorderColor="#003366" 
+    <div><br />
+    <table width="100%"><tr><td align="center"> <asp:Label ID="introLB" runat="server" 
+            Font-Bold="True" Font-Names="Arial" Font-Size="Small" ForeColor="#333333"></asp:Label></td></tr></table>
+        <asp:Panel ID="userPNL" runat="server" BorderColor="#FC713D" 
             BorderStyle="Solid" BorderWidth="1px" Width="100%" Font-Bold="False" 
             Font-Names="Arial" Font-Size="Small" ForeColor="#CC0000">
             <img align="right" alt="PASO 1" longdesc="1er paso para generar un usuario" 
-                src="../imagenes/Iconos/vwicn151.gif" style="width: 22px; height: 18px" /><br />
+                src="../imagenes/Iconos/vwicn151.gif" style="width: 22px; height: 18px" />
+               
+            <br />
             <table align="left" cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="style2">
                         <asp:Label ID="dniLB" runat="server" Font-Bold="True" Font-Names="Arial" 
-                            Font-Size="Small" ForeColor="#003366" Text="Dni:"></asp:Label>
+                            Font-Size="Small" ForeColor="#333333" Text="Dni:"></asp:Label>
                     </td>
                     <td class="style3">
                         <asp:TextBox ID="dniTX" runat="server" Width="150px"></asp:TextBox>
@@ -40,7 +48,7 @@
                 <tr>
                     <td class="style2">
                         <asp:Label ID="idUsuarioLB" runat="server" Font-Bold="True" Font-Names="Arial" 
-                            Font-Size="Small" ForeColor="#003366" Text="ID Usuario:"></asp:Label>
+                            Font-Size="Small" ForeColor="#333333" Text="ID Usuario:"></asp:Label>
                     </td>
                     <td class="style3">
                         <asp:TextBox ID="idUsuarioTX" runat="server" Width="150px"></asp:TextBox>
@@ -54,7 +62,7 @@
                 <tr>
                     <td class="style2" align="right" colspan="2">
                         <asp:Button ID="bSiguiente" runat="server" Font-Bold="True" Font-Names="Arial" 
-                            Font-Size="Small" ForeColor="#003366" onclick="bSiguiente_Click" 
+                            Font-Size="Small" ForeColor="#FC713D" onclick="bSiguiente_Click" 
                             Text="Siguiente" />
                     </td>
                     <td align="right">
@@ -74,7 +82,7 @@
             <asp:Label ID="avisoGralLB" runat="server" Font-Italic="True" 
                 Font-Names="Arial" Font-Size="Small" ForeColor="#339933"></asp:Label>
 <br /><br />
-<asp:Panel ID="pnlCargaUsuario" runat="server" BorderColor="#003366" 
+<asp:Panel ID="pnlCargaUsuario" runat="server" BorderColor="#FC713D" 
     BorderStyle="Solid" BorderWidth="1px" Font-Size="Small" Height="130px" 
     Width="100%">
     <img align="right" alt="PASO 2" longdesc="2do Paso para generar el usuario" 
@@ -85,7 +93,7 @@
         <tr>
             <td class="style7">
                 <asp:Label ID="usuarioLB" runat="server" Font-Bold="True" Font-Names="Arial" 
-                    Font-Size="Small" ForeColor="#003366" Text="Usuario:"></asp:Label>
+                    Font-Size="Small" ForeColor="#333333" Text="Usuario:"></asp:Label>
             </td>
             <td class="style8">
                 <asp:TextBox ID="usuarioTX" runat="server" Width="150px"></asp:TextBox>
@@ -99,7 +107,8 @@
         <tr>
             <td class="style7">
                 <asp:Label ID="contraseniaLB" runat="server" Font-Bold="True" 
-                    Font-Names="Arial" Font-Size="Small" ForeColor="#003366" Text="Contraseña:"></asp:Label>
+                    Font-Names="Arial" Font-Size="Small" ForeColor="#333333" 
+                    Text="Contraseña:"></asp:Label>
             </td>
             <td class="style8">
                 <asp:TextBox ID="contraseniaTX" runat="server" Width="150px" 
@@ -114,7 +123,7 @@
         <tr>
             <td class="style7">
                 <asp:Label ID="verificarLB" runat="server" Font-Bold="True" Font-Names="Arial" 
-                    Font-Size="Small" ForeColor="#003366" Text="Repita Contraseña:"></asp:Label>
+                    Font-Size="Small" ForeColor="#333333" Text="Repita Contraseña:"></asp:Label>
             </td>
             <td align="left" class="style8">
                 <asp:TextBox ID="verificarTX" runat="server" TextMode="Password" Width="150px"></asp:TextBox>
@@ -128,10 +137,11 @@
         <tr>
             <td class="style7" align="right" colspan="2">
                 <asp:Button ID="bRegistrar" runat="server" Font-Bold="True" Font-Names="Arial" 
-                    Font-Size="Small" ForeColor="#003366" onclick="bRegistrar_Click" 
+                    Font-Size="Small" ForeColor="#FC713D" onclick="bRegistrar_Click" 
                     Text="Registrar" />
                 <asp:Button ID="bVolver" runat="server" Font-Bold="True" Font-Names="Arial" 
-                    Font-Size="Small" ForeColor="#003366" onclick="bVolver_Click" Text="Volver" />
+                    Font-Size="Small" ForeColor="#FC713D" onclick="bVolver_Click" 
+                    Text="Volver" />
             </td>
             <td>
                 &nbsp;</td>

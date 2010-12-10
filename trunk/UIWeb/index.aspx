@@ -18,20 +18,20 @@
         </style>
     </head>
 <body>
-<div style="padding-left:25%; width:800px">
+<div style= width:800px" align="center">
     <form id="form1" runat="server" visible="True">
-<table style="width:800px">
+<table style="width:800px" align="center">
 <tr>
 <td>
     <img alt="logo" src="imagenes/logo.jpg" style="width: 802px; height: 100px" /></td>
 </tr>
 <tr>
-<td style="width: 800px; text-align:left">
-    <asp:Panel ID="menuPNL" runat="server" BackColor="#CEE0FD" 
-        BorderColor="#003366" BorderStyle="Solid" BorderWidth="1px" Width="100%">
-        <asp:Menu ID="menu" runat="server" BackColor="#CEE0FD" BorderWidth="0px" 
+<td style="width: 800px; text-align:left" align="center">
+    <asp:Panel ID="menuPNL" runat="server" BackColor="#FC713D" 
+        BorderColor="#333333" BorderStyle="Solid" BorderWidth="1px" Width="100%">
+        <asp:Menu ID="menu" runat="server" BackColor="#FC713D" BorderWidth="0px" 
             Font-Bold="True" Font-Names="Arial" 
-        Font-Size="Small" ForeColor="#003366" Orientation="Horizontal" 
+        Font-Size="Small" ForeColor="#333333" Orientation="Horizontal" 
             onmenuitemclick="menu_MenuItemClick">
             <DynamicHoverStyle BackColor="#97BCFB" />
             <DynamicSelectedStyle BackColor="#F1F7FE" />
@@ -39,16 +39,18 @@
             BorderStyle="Solid" BorderWidth="1px" Font-Bold="True" Font-Names="Arial" 
             ForeColor="#003366" />
             <Items>
-                <asp:MenuItem Text="Log In" Value="baselogin">
-                    <asp:MenuItem Text="Log In" Value="logIn"></asp:MenuItem>
+                <asp:MenuItem Text="Log In" Value="logIn">
                 </asp:MenuItem>
-                <asp:MenuItem Text="ver" Value="ver"></asp:MenuItem>
             </Items>
         </asp:Menu>
     </asp:Panel>
     <br />
     <table align="center" border="0" cellpadding="0" cellspacing="0" 
         style="width: 98%">
+                <tr><td align = center>
+            <asp:Label ID="introLB" runat="server" Font-Bold="True" Font-Names="Arial" 
+                Font-Size="Small" ForeColor="#333333"></asp:Label>
+            </td></tr>
         <tr>
             <td>
                 <uc3:Ingreso ID="Ingreso1" runat="server" />
@@ -59,6 +61,7 @@
                 <uc1:firstLogIn ID="firstLogIn" runat="server" Visible="False" />
             </td>
         </tr>
+
     </table>
 </td>
 </tr>

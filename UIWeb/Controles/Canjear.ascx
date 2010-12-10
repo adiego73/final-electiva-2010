@@ -30,5 +30,5 @@
 <asp:Label ID="lExcepciones" runat="server"></asp:Label>
 <hr />
 
-<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+
 

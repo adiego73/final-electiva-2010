@@ -59,6 +59,7 @@
     <Content Include="Controles\FirstLogIn.ascx" />
     <Content Include="Controles\Ingreso.ascx" />
     <Content Include="Controles\Minformacion.ascx" />
+    <Content Include="Controles\MisPremios.ascx" />
     <Content Include="imagenes\logo.jpg" />
     <Content Include="index.aspx" />
     <Content Include="imagenes\iconos\vwicn001.gif" />
@@ -291,6 +292,13 @@
     </Compile>
     <Compile Include="Controles\Minformacion.ascx.designer.cs">
       <DependentUpon>Minformacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\MisPremios.ascx.cs">
+      <DependentUpon>MisPremios.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\MisPremios.ascx.designer.cs">
+      <DependentUpon>MisPremios.ascx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>

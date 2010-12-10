@@ -571,6 +571,33 @@ namespace Logic
             }
 
             //---- Fin Consultas de Compras
+
+            //----  Consulta de Canjes
+            public static List<Canje> listarTodosLosCanjes()
+            {
+                try
+                {
+                    DBCanje db = new DBCanje();
+                    DataSet ds = db.listarTodos();
+                    List<Canje> canjes = ASupermercado.crearListaCanje(ds);
+                    return canjes;
+                }
+                catch (ExcepcionGral exc)
+                { throw exc; }
+            }
+
+            public static List<Canje> listarTodosLosCanjes(int dni)
+            {
+                try
+                {
+                    DBCanje db = new DBCanje();
+                    DataSet ds = db.listarTodos(dni);
+                    List<Canje> canjes = ASupermercado.crearListaCanje(ds);
+                    return canjes;
+                }
+                catch (ExcepcionGral exc)
+                { throw exc; }
+            }
             
         #endregion
 
@@ -665,6 +692,28 @@ namespace Logic
                 }
 
                 return compras;
+            }
+
+        //----  Canje
+            private static List<Canje> crearListaCanje(DataSet ds)
+            {
+                List<Canje> canjes = new List<Canje>();
+                Canje canje;
+                int codigo;
+                Cliente cli;
+                Premio pre;
+                DateTime fecha;
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    codigo = RecuperarAtributo.Entero(r, "CAN_Codigo");
+                    cli = ASupermercado.traerCliente(RecuperarAtributo.Entero(r, "CLI_Dni"));
+                    pre = ASupermercado.traerPremio(RecuperarAtributo.Entero(r, "PRE_Codigo"));
+                    fecha = RecuperarAtributo.Fecha(r, "CAN_Fecha");
+                    canje = new Canje(codigo, cli, pre, fecha);
+                    canjes.Add(canje);
+                }
+
+                return canjes;
             }
         #endregion
 

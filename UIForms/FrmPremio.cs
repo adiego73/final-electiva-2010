@@ -79,13 +79,12 @@ namespace UIForms
                 if (exc.TieneErrores)
                     throw exc;
 
-                string estado = "Activo";
-                premio = new Premio(Conversiones.AInt(codigoLB2.Text), descripcionTX.Text,Conversiones.AInt(cantidadPuntosTX.Text), Conversiones.AInt(cantidadStockTX.Text), estado);
+                premio = new Premio(Conversiones.AInt(codigoLB2.Text), descripcionTX.Text,Conversiones.AInt(cantidadPuntosTX.Text), Conversiones.AInt(cantidadStockTX.Text));
                 try
                 {
                     int i = ASupermercado.agregar(premio);
 
-                    MessageBox.Show("El premio se ha guardado con éxito ");
+                    MessageBox.Show("El premio se ha guardado con éxito");
                     this.Close();
                 }
                 catch (ExcepcionGral ex)

@@ -53,6 +53,7 @@ namespace UIWeb
                 break;
                 case "Canjear":
                     this.ocultarTodo();
+                    Canjear1.Visible = true;
                     break;
                 case "MiInformacion":
                     this.ocultarTodo();

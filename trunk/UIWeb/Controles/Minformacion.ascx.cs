@@ -57,6 +57,8 @@ namespace UIWeb.Controles
                 lException.Text = "La informacion se modifico correctamente.";
                 lException.ForeColor = new System.Drawing.Color();
                 lException.ForeColor = System.Drawing.ColorTranslator.FromHtml("#46FF96");
+                lException.BackColor = new System.Drawing.Color();
+                lException.BackColor = System.Drawing.ColorTranslator.FromHtml("#333333");
             }
             catch (ExcepcionGral exc)
             {

@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Minformacion.ascx.cs"
     Inherits="UIWeb.Controles.Minformacion" %>
+<hr />
 <table>
     <tr>
         <td>
@@ -72,9 +73,11 @@
     </tr>
     <tr>
         <td colspan="2">
+            <div style="text-align:center">
             <asp:Button ID="btModificar" runat="server" onclick="btModificar_Click" 
                 Text="Modificar" />
+            </div>
         </td>
     </tr>
 </table>
-
+<hr />

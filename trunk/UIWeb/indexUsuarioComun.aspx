@@ -10,6 +10,11 @@
 <head runat="server">
     <title>Gorilla - Red de Supermercados</title>
     <style type="text/css">
+        * 
+        {
+        	font-family: Tahoma;
+        	font-size: 10pt;
+        }
         #form1
         {
             width: 800px;
@@ -45,13 +50,10 @@
                                 NodeSpacing="0px" VerticalPadding="0px" />
                         </asp:TreeView>
                     </td>
-                    <td>
+                    <td style="float: left; top: 0px;">
                         <uc1:CatalogoCompleto ID="CatalogoCompleto1" runat="server" />
-                        <br />
                         <uc2:CatalogoUsuario ID="CatalogoUsuario1" runat="server" />
-                        <br />
                         <uc3:Canjear ID="Canjear1" runat="server" />
-                        <br />
                         <uc4:Minformacion ID="Minformacion1" runat="server" />
                     </td>
                 </tr>

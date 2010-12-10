@@ -38,7 +38,54 @@ namespace Db
 
         #endregion
 
-        #region Metodos
+        #region ABM
+
+            public void agregar(ArrayList arr, Transaccion t)
+            {
+                try
+                {
+                    int cod = this.calcularId(t);
+
+                    string sql = @"INSERT INTO Canje (CAN_Codigo, CLI_Dni, PRE_Codigo, CAN_Fecha) ";
+                    sql += "VALUES (@cCodigo, @Dni, @pCodigo, @Fecha) select SCOPE_IDENTITY() ";
+
+                    Parametros col = new Parametros();
+
+                    col.Add(Parametros.CargarParametro("@cCodigo", TipoDato.Entero, cod));
+                    col.Add(Parametros.CargarParametro("@Dni", TipoDato.Entero, arr[1]));
+                    col.Add(Parametros.CargarParametro("@pCodigo", TipoDato.Entero, arr[2]));
+                    col.Add(Parametros.CargarParametro("@Fecha", TipoDato.Fecha, arr[3]));
+
+                    object id = ParaDB.EjecutarConsulta(sql, col, t, "Canje");
+                }
+                catch (ExcepcionGral exc)
+                {
+                    this.Dispose();
+                    throw exc;
+                }
+            }
+
+            public void eliminar()
+            {
+                Transaccion t = new Transaccion();
+                try
+                {
+                    t.Begin();
+                    string sql = "DELETE FROM Canje;";
+                    ParaDB.EjecutarConsulta(sql, t);
+                    t.Commit();
+                }
+                catch (ExcepcionGral exc)
+                {
+                    t.Rollback();
+                    throw exc;
+                }
+            }
+
+        #endregion
+        
+        #region Consultas
+            
             private int calcularId(Transaccion t)
             {
                 /*
@@ -104,31 +151,6 @@ namespace Db
                     throw exc;
                 }
         }
-            
-            public void agregar(ArrayList arr, Transaccion t)
-            {
-                try
-                {
-                    int cod = this.calcularId(t);
-
-                    string sql = @"INSERT INTO Canje (CAN_Codigo, CLI_Dni, PRE_Codigo, CAN_Fecha) ";
-                    sql += "VALUES (@cCodigo, @Dni, @pCodigo, @Fecha) select SCOPE_IDENTITY() ";
-
-                    Parametros col = new Parametros();
-
-                    col.Add(Parametros.CargarParametro("@cCodigo", TipoDato.Entero, cod));
-                    col.Add(Parametros.CargarParametro("@Dni", TipoDato.Entero, arr[1]));
-                    col.Add(Parametros.CargarParametro("@pCodigo", TipoDato.Entero, arr[2]));
-                    col.Add(Parametros.CargarParametro("@Fecha", TipoDato.Fecha, arr[3]));
-
-                    object id = ParaDB.EjecutarConsulta(sql, col, t, "Compra");
-                }
-                catch (ExcepcionGral exc)
-                {
-                    this.Dispose();
-                    throw exc;
-                }
-            }
 
         #endregion
 

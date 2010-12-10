@@ -47,7 +47,10 @@ namespace UIWeb.Controles
                     Session["Usuario"] = ASupermercado.traerUsuario(usuarioTX.Text, ContraseniaTX.Text);
                     if ((Session["Usuario"]) != null)
                     {
-                        avisoGralLB.Text = "Bienvenido!, " + ((Usuario)Session["Usuario"]).Cliente.Nombre + " " + ((Usuario)Session["Usuario"]).Cliente.Apellido;
+                        if (((Usuario)Session["Usuario"]).Cliente != null)
+                            avisoGralLB.Text = "Bienvenido!, " + ((Usuario)Session["Usuario"]).Cliente.Nombre + " " + ((Usuario)Session["Usuario"]).Cliente.Apellido;
+                        else
+                            avisoGralLB.Text = "Bienvenido!, " + ((Usuario)Session["Usuario"]).User;
                         avisoGralLB.Visible = true;
                         if (this.usuarioIngresado != null)
                         {

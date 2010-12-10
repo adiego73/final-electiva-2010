@@ -13,8 +13,8 @@ using System.Xml.Linq;
 using System.Collections.Generic;
 using System.IO;
 using Logic;
-using Library;
-
+using Library.Funciones;
+using Library.Excepciones;
 
 
 namespace UIWeb.Controles
@@ -23,19 +23,20 @@ namespace UIWeb.Controles
     {
         // public event EventHandler canjearClick;
         public Usuario usuario;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //canjearClick += new EventHandler(Click_Canjear);
 
             usuario = (Usuario)Session["Usuario"];
             if (!IsPostBack)
-                this.completarCatalogo();
+                this.completarCatalogo(ASupermercado.calcularPuntajeTotal(usuario.Cliente));
         }
 
         public void Click_Canjear(object o, EventArgs e)
         {
             TextBox1.Text = "se apreto el botonete " + cCatalogo.SelectedRow.Cells[1].Text;
-            int idPremio = int.Parse(cCatalogo.SelectedRow.Cells[1].Text);
+            int idPremio =  Conversiones.AInt(cCatalogo.SelectedRow.Cells[1].Text);
             ASupermercado.canjearPremio(idPremio, usuario.Cliente);
             
         }

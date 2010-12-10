@@ -350,5 +350,10 @@ namespace UIForms
             }
 
         #endregion
+
+            private void vaciarToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                ASupermercado.eliminar();
+            }
     }
 }

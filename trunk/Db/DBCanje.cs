@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using Library.Excepciones;
 using Library.ParaDB;
 using Library.Funciones;
+using System.Data;
 
 namespace Db
 {
@@ -38,6 +39,36 @@ namespace Db
         #endregion
 
         #region Metodos
+            private int calcularId(Transaccion t)
+            {
+                /*
+                 * Este método determina qué Código de canje tendra el canje a crear.
+                 */
+                try
+                {
+                    string sql = "SELECT TOP 1 CAN_Codigo FROM Canje ORDER BY CAN_Codigo DESC;";
+
+                    DataSet ds;
+                    ParaDB.EjecutarConsulta(sql, t, out ds);
+
+                    if (ds.Tables[0].Rows.Count == 1)
+                    {
+                        int cod = RecuperarAtributo.Entero(ds.Tables[0].Rows[0], "CAN_Codigo");
+                        cod++;
+                        return cod;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+                catch (ExcepcionGral e)
+                {
+                    throw e;
+                }
+
+            }
+
             public int sumarPuntaje(int dni)
             {
                 SqlConnection conn = null;
@@ -73,6 +104,32 @@ namespace Db
                     throw exc;
                 }
         }
+            
+            public void agregar(ArrayList arr, Transaccion t)
+            {
+                try
+                {
+                    int cod = this.calcularId(t);
+
+                    string sql = @"INSERT INTO Canje (CAN_Codigo, CLI_Dni, PRE_Codigo, CAN_Fecha) ";
+                    sql += "VALUES (@cCodigo, @Dni, @pCodigo, @Fecha) select SCOPE_IDENTITY() ";
+
+                    Parametros col = new Parametros();
+
+                    col.Add(Parametros.CargarParametro("@cCodigo", TipoDato.Entero, cod));
+                    col.Add(Parametros.CargarParametro("@Dni", TipoDato.Entero, arr[1]));
+                    col.Add(Parametros.CargarParametro("@pCodigo", TipoDato.Entero, arr[2]));
+                    col.Add(Parametros.CargarParametro("@Fecha", TipoDato.Fecha, arr[3]));
+
+                    object id = ParaDB.EjecutarConsulta(sql, col, t, "Compra");
+                }
+                catch (ExcepcionGral exc)
+                {
+                    this.Dispose();
+                    throw exc;
+                }
+            }
+
         #endregion
 
         #region Destructores

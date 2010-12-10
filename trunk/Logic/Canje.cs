@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 
@@ -58,6 +59,16 @@ namespace Logic
 
         #region Metodos
         //poner todos los métodos aqui
+            public ArrayList pasarAMR()
+            {
+                ArrayList al = new ArrayList();
+                al.Add(this.Codigo);
+                al.Add(this.Cliente.Dni);
+                al.Add(this.Premio.Codigo);
+                al.Add(this.Fecha);
+
+                return al;
+            }
         #endregion
 
     }

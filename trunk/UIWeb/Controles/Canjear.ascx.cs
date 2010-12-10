@@ -21,18 +21,23 @@ namespace UIWeb.Controles
 {
     public partial class Canjear : System.Web.UI.UserControl
     {
-       // public event EventHandler canjearClick;
+        // public event EventHandler canjearClick;
+        public Usuario usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
             //canjearClick += new EventHandler(Click_Canjear);
 
+            usuario = (Usuario)Session["Usuario"];
             if (!IsPostBack)
                 this.completarCatalogo();
         }
 
         public void Click_Canjear(object o, EventArgs e)
         {
-            TextBox1.Text = "se apreto el botonete";
+            TextBox1.Text = "se apreto el botonete " + cCatalogo.SelectedRow.Cells[1].Text;
+            int idPremio = int.Parse(cCatalogo.SelectedRow.Cells[1].Text);
+            ASupermercado.canjearPremio(idPremio, usuario.Cliente);
+            
         }
 
         private void completarCatalogo(int pts)
@@ -63,18 +68,22 @@ namespace UIWeb.Controles
                     listaPremios.Rows[i].SetField("Descripcion", p.Descripcion);
                     listaPremios.Rows[i].SetField("Puntos", p.CantPuntos);
                     listaPremios.Rows[i].SetField("Stock", p.CantStock);
-                    listaPremios.Rows[i].SetField("Canjear","catalogo");
+                    listaPremios.Rows[i].SetField("Canjear", "catalogo");
                     i++;
                 }
             }
             //Asocia la tabla al gridview
-            cCatalogo.DataSource = listaPremios;
-            cCatalogo.DataBind();
             CommandField cf = new CommandField();
             cf.ButtonType = ButtonType.Button;
             cf.ShowSelectButton = true;
             cf.SelectText = "Canjear";
-            cCatalogo.Columns.Add(cf);
+            if (cCatalogo.Columns.Count == 0)
+            {
+                cCatalogo.Columns.Add(cf);
+                cCatalogo.Columns[0].HeaderText = "Canjear";
+            }
+            cCatalogo.DataSource = listaPremios;
+            cCatalogo.DataBind();
         }
 
         private void completarCatalogo()
@@ -95,42 +104,41 @@ namespace UIWeb.Controles
 
             foreach (Premio p in alPremios)
             {
-                //Button b = new Button();
-                //b.Text = "<input type='button' value='mierda'>";
-                ////b.Click += new EventHandler(Click_Canjear);
-                //b.Attributes.Add("OnClick", "Click_Canjear");
-
-               /* StringWriter stringWriter = new StringWriter();
-                HtmlTextWriter htmlWriter = new HtmlTextWriter(stringWriter);
-                htmlWriter.RenderBeginTag(HtmlTextWriterTag.Input);
-                htmlWriter.RenderEndTag();
-                */
                 listaPremios.Rows.Add(new Object[] { "" });
                 listaPremios.Rows[i].SetField("Codigo", p.Codigo);
                 listaPremios.Rows[i].SetField("Descripcion", p.Descripcion);
                 listaPremios.Rows[i].SetField("Puntos", p.CantPuntos);
                 listaPremios.Rows[i].SetField("Stock", p.CantStock);
-                //listaPremios.Rows[i].SetField("Canjear", b.Text);
+
                 i++;
             }
             //Asocia la tabla al gridview
-            cCatalogo.DataSource = listaPremios;
-            cCatalogo.DataBind();
+
             CommandField cf = new CommandField();
             cf.ButtonType = ButtonType.Button;
             cf.ShowSelectButton = true;
             cf.SelectText = "Canjear";
-            cCatalogo.Columns.Add(cf);
+            if (cCatalogo.Columns.Count == 0)
+            {
+                cCatalogo.Columns.Add(cf);
+                cCatalogo.Columns[0].HeaderText = "Canjear";
+            }
+
+            cCatalogo.DataSource = listaPremios;
+            cCatalogo.DataBind();
         }
 
         protected void Submit_Click(object sender, EventArgs e)
         {
-            TextBox1.Text = "submit";
-        }
-
-        protected void cCatalogo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TextBox1.Text = cCatalogo.SelectedRow.Cells[1].Text;
+            switch (cPuntajes.SelectedValue)
+            {
+                case "Todos":
+                    this.completarCatalogo();
+                    break;
+                default:
+                    this.completarCatalogo(int.Parse(cPuntajes.SelectedValue));
+                    break;
+            }
         }
     }
 }

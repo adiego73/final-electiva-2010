@@ -36,7 +36,7 @@ namespace UIWeb.Controles
                 tbMail.Text = usuario.Cliente.Mail;
                 tbDni.Text = usuario.Cliente.Dni.ToString();
                 tbDni.Enabled = false;
-                tbPuntos.Text = usuario.Cliente.CantPuntos.ToString();
+                tbPuntos.Text = ASupermercado.calcularPuntajeTotal(usuario.Cliente).ToString();
                 tbPuntos.Enabled = false;
             }
 

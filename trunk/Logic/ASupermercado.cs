@@ -211,7 +211,7 @@ namespace Logic
 
         //---- Fin ABM de Premios
 
-        //ABM de Premios ---- Jessi 05/12
+        //ABM de Compras ---- Jessi 05/12
 
         public static int agregar(Compra com)
         {
@@ -236,7 +236,7 @@ namespace Logic
             }
         }
 
-        // Fin Compra
+        // Fin ABM de Compra
 
         //VACIAR TODAS LAS TABLAS
             public static void eliminar()
@@ -262,6 +262,7 @@ namespace Logic
                 catch (ExcepcionGral exc)
                 { throw exc; }
             }
+
         //  Canje de Premios
 
             public static void canjearPremio(int idPremio, Cliente cliente)
@@ -637,8 +638,7 @@ namespace Logic
                     pre.Descripcion = RecuperarAtributo.Cadena(r, "PRE_Descripcion");
                     pre.CantPuntos = RecuperarAtributo.Entero(r, "PRE_CantPuntos");
                     pre.CantStock = RecuperarAtributo.Entero(r, "PRE_CantStock");
-                    pre.Estado = RecuperarAtributo.Cadena(r, "PRE_Estado");
-                    pre = new Premio(pre.Codigo, pre.Descripcion, pre.CantPuntos, pre.CantStock, pre.Estado);
+                    pre = new Premio(pre.Codigo, pre.Descripcion, pre.CantPuntos, pre.CantStock);
                     premios.Add(pre);
                 }
 
@@ -699,14 +699,6 @@ namespace Logic
                 pre.CantPuntos = RecuperarAtributo.Entero(r, "PRE_CantPuntos");
                 pre.CantStock = RecuperarAtributo.Entero(r, "PRE_CantStock");
                 return pre;
-                //Premio pre = null;
-                //DataRow r = ds.Tables[0].Rows[0];
-                //pre.Codigo = RecuperarAtributo.Entero(r, "PRE_Codigo");
-                //pre.Descripcion = RecuperarAtributo.Cadena(r, "PRE_Descripcion");
-                //pre.CantPuntos = RecuperarAtributo.Entero(r, "PRE_CantidadPuntos");
-                //pre.CantStock = RecuperarAtributo.Entero(r, "PRE_CantidadStock");
-                //pre = new Premio(pre.Codigo, pre.Descripcion, pre.CantPuntos, pre.CantStock);
-                //return pre;
             }
 
             private static Usuario cargarUsuario(DataSet ds)

@@ -17,7 +17,7 @@
         
 </div>
 <asp:GridView ID="cCatalogo" runat="server" BorderStyle="Solid" Width="649px" 
-    BorderWidth="1px" onselectedindexchanged="cCatalogo_SelectedIndexChanged">
+    BorderWidth="1px" onselectedindexchanged="Click_Canjear">
     <RowStyle BorderStyle="Solid" BackColor="#CCFFCC" BorderWidth="1px" 
         Height="15px" />
     <SelectedRowStyle BorderStyle="None" />
@@ -30,3 +30,4 @@
 <hr />
 
 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+

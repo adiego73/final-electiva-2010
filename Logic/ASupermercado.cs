@@ -253,6 +253,58 @@ namespace Logic
                 catch (ExcepcionGral exc)
                 { throw exc; }
             }
+        //  Canje de Premios
+
+            public static void canjearPremio(int idPremio, Cliente cliente)
+            {
+                ExcepcionGral ex = null;
+                Premio p = ASupermercado.traerPremio(idPremio);
+                if (ASupermercado.calcularPuntajeTotal(cliente) >= p.CantPuntos && p.CantStock > 0)
+                {
+                    // aca tengo que elimiar 1 del premio, crear el canje
+
+                    try
+                    {
+                        DBCanje dbCanje = new DBCanje();
+                        DBPremio dbPremio = new DBPremio();
+
+                        Canje c = new Canje(10, cliente, p, DateTime.Now);
+
+                        ArrayList al = c.pasarAMR();
+                        p.CantStock -= 1; // resto uno al stock
+                        ArrayList alPremio = p.pasarAMR();
+                        Transaccion t = new Transaccion();
+                        t.Begin();
+
+                        dbCanje.agregar(al, t); // agrega el canje a la base de datos
+                        dbCanje.Dispose();
+                        t.Commit();
+
+                        t.Begin();
+                        dbPremio.modificar(alPremio, t);
+                        dbPremio.Dispose();
+                        t.Commit();
+                    }
+                    catch (ExcepcionGral exc)
+                    {
+                        throw exc;
+                    }
+
+                }
+                else if (ASupermercado.calcularPuntajeTotal(cliente) < p.CantPuntos)
+                {
+                    
+                    ex = new ExcepcionGral();
+                    ex.AgregarError("La cantidad de puntos de la que dispone es menor a los puntos necesarios para canjear el premio");
+                    throw ex;
+                }
+                else
+                {
+                    ex = new ExcepcionGral();
+                    ex.AgregarError("No hay stock del premio");
+                    throw ex;
+                }
+            }
 
         #endregion
 

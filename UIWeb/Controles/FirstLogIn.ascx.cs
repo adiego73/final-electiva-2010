@@ -19,6 +19,7 @@ namespace UIWeb.Controles
     public partial class edfirstLogIn : System.Web.UI.UserControl
     {
         public event EventHandler volver;
+        public event EventHandler usuarioIngresado;
         #region Propiedades
 
             public Usuario Usuario
@@ -83,6 +84,8 @@ namespace UIWeb.Controles
                         avisoGralLB2.Text = "Su usuario ha sido actualizado!. La próxima vez que ingrese ";
                         avisoGralLB2.Text += "podrá hacerlo usando su nuevo usuario y contraseña.";
                         avisoGralLB2.Visible = true;
+                        if (usuarioIngresado != null)
+                            usuarioIngresado(null, null);
                     }
                     catch (ExcepcionGral exc)
                     { errorGralLB2.Text = exc.Message; }

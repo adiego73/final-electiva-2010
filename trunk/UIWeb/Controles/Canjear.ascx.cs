@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using System.IO;
 using Logic;
 using Library;
 
@@ -20,10 +21,10 @@ namespace UIWeb.Controles
 {
     public partial class Canjear : System.Web.UI.UserControl
     {
-        public event EventHandler canjearClick;
+       // public event EventHandler canjearClick;
         protected void Page_Load(object sender, EventArgs e)
         {
-           // canjearClick = new EventHandler(Click_Canjear);
+            //canjearClick += new EventHandler(Click_Canjear);
 
             if (!IsPostBack)
                 this.completarCatalogo();
@@ -55,14 +56,14 @@ namespace UIWeb.Controles
                 {
                     Button b = new Button();
                     b.Text = "Canjear";
-//                    canjearClick += b.Click();
+                    b.Click += new EventHandler(Click_Canjear);
 
                     listaPremios.Rows.Add(new Object[] { "" });
                     listaPremios.Rows[i].SetField("Codigo", p.Codigo);
                     listaPremios.Rows[i].SetField("Descripcion", p.Descripcion);
                     listaPremios.Rows[i].SetField("Puntos", p.CantPuntos);
                     listaPremios.Rows[i].SetField("Stock", p.CantStock);
-                    listaPremios.Rows[i].SetField("Canjear", b);
+                    listaPremios.Rows[i].SetField("Canjear","catalogo");
                     i++;
                 }
             }
@@ -89,13 +90,21 @@ namespace UIWeb.Controles
             foreach (Premio p in alPremios)
             {
                 Button b = new Button();
-                b.Text = "Canjear";
+                b.Text = "<input type='button' value='mierda'>";
+                //b.Click += new EventHandler(Click_Canjear);
+                b.Attributes.Add("OnClick", "Click_Canjear");
+
+               /* StringWriter stringWriter = new StringWriter();
+                HtmlTextWriter htmlWriter = new HtmlTextWriter(stringWriter);
+                htmlWriter.RenderBeginTag(HtmlTextWriterTag.Input);
+                htmlWriter.RenderEndTag();
+                */
                 listaPremios.Rows.Add(new Object[] { "" });
                 listaPremios.Rows[i].SetField("Codigo", p.Codigo);
                 listaPremios.Rows[i].SetField("Descripcion", p.Descripcion);
                 listaPremios.Rows[i].SetField("Puntos", p.CantPuntos);
                 listaPremios.Rows[i].SetField("Stock", p.CantStock);
-                listaPremios.Rows[i].SetField("Canjear", "Canjear");
+                listaPremios.Rows[i].SetField("Canjear", b.Text);
                 i++;
             }
             //Asocia la tabla al gridview

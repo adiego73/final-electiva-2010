@@ -549,6 +549,19 @@ namespace Logic
                 { throw exc; }
             }
 
+            public static List<Compra> listarTodasLasComprasPorUsuario(int dni)
+            {
+                try
+                {
+                    DBCompra db = new DBCompra();
+                    DataSet ds = db.listarTodas(dni);
+                    List<Compra> compras = ASupermercado.crearListaCompras(ds);
+                    return compras;
+                }
+                catch (ExcepcionGral exc)
+                { throw exc; }
+            }
+
             public static bool existeCompra(int cod)
             {
                 try

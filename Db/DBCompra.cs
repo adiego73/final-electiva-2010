@@ -116,6 +116,38 @@ namespace Db
                 }
             }
 
+            public DataSet listarTodas(int dni)
+            {
+                SqlConnection conn = null;
+                try
+                {
+                    try
+                    {
+                        conn = new SqlConnection(DBGeneral.StrConn);
+                        conn.Open();
+                    }
+                    catch (SqlException e)
+                    {
+                        ExcepcionGral exc = new ExcepcionGral();
+                        exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
+                        throw exc;
+                    }
+                    string sql = "SELECT * FROM Compra p WHERE p.CLI_Dni = @Dni;";
+                    Parametros col = new Parametros();
+                    col.Add(Parametros.CargarParametro("@Dni", TipoDato.Entero, dni));
+                    DataSet ds;
+                    ParaDB.EjecutarConsulta(sql, col, conn, out ds);
+                    conn.Close();
+                    return ds;
+                }
+                catch (ExcepcionGral exc)
+                {
+                    conn.Close();
+                    throw exc;
+                }
+            }
+
+
             public bool existe(int cod)
             {
                 SqlConnection conn = null;

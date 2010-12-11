@@ -35,14 +35,16 @@
             this.nUsuarioEspecial = new System.Windows.Forms.ToolStripMenuItem();
             this.nPremio = new System.Windows.Forms.ToolStripMenuItem();
             this.nCompra = new System.Windows.Forms.ToolStripMenuItem();
-            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrar = new System.Windows.Forms.ToolStripMenuItem();
+            this.vaciar = new System.Windows.Forms.ToolStripMenuItem();
             this.listarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.lPremio = new System.Windows.Forms.ToolStripMenuItem();
             this.lCompra = new System.Windows.Forms.ToolStripMenuItem();
+            this.lCompraTodas = new System.Windows.Forms.ToolStripMenuItem();
+            this.lCompraCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDG = new System.Windows.Forms.DataGridView();
             this.lTitulo = new System.Windows.Forms.Label();
-            this.vaciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDG)).BeginInit();
             this.SuspendLayout();
@@ -62,10 +64,10 @@
             // 
             this.archivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevo,
-            this.cerrarToolStripMenuItem,
-            this.vaciarToolStripMenuItem});
+            this.cerrar,
+            this.vaciar});
             this.archivo.Name = "archivo";
-            this.archivo.Size = new System.Drawing.Size(60, 20);
+            this.archivo.Size = new System.Drawing.Size(55, 20);
             this.archivo.Text = "Archivo";
             // 
             // nuevo
@@ -82,37 +84,44 @@
             // nCliente
             // 
             this.nCliente.Name = "nCliente";
-            this.nCliente.Size = new System.Drawing.Size(159, 22);
+            this.nCliente.Size = new System.Drawing.Size(162, 22);
             this.nCliente.Text = "Cliente";
             this.nCliente.Click += new System.EventHandler(this.nCliente_Click);
             // 
             // nUsuarioEspecial
             // 
             this.nUsuarioEspecial.Name = "nUsuarioEspecial";
-            this.nUsuarioEspecial.Size = new System.Drawing.Size(159, 22);
+            this.nUsuarioEspecial.Size = new System.Drawing.Size(162, 22);
             this.nUsuarioEspecial.Text = "Usuario Especial";
             this.nUsuarioEspecial.Click += new System.EventHandler(this.nUsuarioEspecial_Click);
             // 
             // nPremio
             // 
             this.nPremio.Name = "nPremio";
-            this.nPremio.Size = new System.Drawing.Size(159, 22);
+            this.nPremio.Size = new System.Drawing.Size(162, 22);
             this.nPremio.Text = "Premio";
             this.nPremio.Click += new System.EventHandler(this.nPremio_Click);
             // 
             // nCompra
             // 
             this.nCompra.Name = "nCompra";
-            this.nCompra.Size = new System.Drawing.Size(159, 22);
+            this.nCompra.Size = new System.Drawing.Size(162, 22);
             this.nCompra.Text = "Compra";
             this.nCompra.Click += new System.EventHandler(this.nCompra_Click);
             // 
-            // cerrarToolStripMenuItem
+            // cerrar
             // 
-            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cerrarToolStripMenuItem.Text = "Cerrar";
-            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
+            this.cerrar.Name = "cerrar";
+            this.cerrar.Size = new System.Drawing.Size(152, 22);
+            this.cerrar.Text = "Cerrar";
+            this.cerrar.Click += new System.EventHandler(this.cerrar_Click);
+            // 
+            // vaciar
+            // 
+            this.vaciar.Name = "vaciar";
+            this.vaciar.Size = new System.Drawing.Size(152, 22);
+            this.vaciar.Text = "Vaciar";
+            this.vaciar.Click += new System.EventHandler(this.vaciar_Click);
             // 
             // listarToolStripMenuItem
             // 
@@ -121,29 +130,45 @@
             this.lPremio,
             this.lCompra});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            this.listarToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.listarToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.listarToolStripMenuItem.Text = "Listar";
             // 
             // lCliente
             // 
             this.lCliente.Name = "lCliente";
-            this.lCliente.Size = new System.Drawing.Size(122, 22);
+            this.lCliente.Size = new System.Drawing.Size(127, 22);
             this.lCliente.Text = "Clientes";
             this.lCliente.Click += new System.EventHandler(this.lCliente_Click);
             // 
             // lPremio
             // 
             this.lPremio.Name = "lPremio";
-            this.lPremio.Size = new System.Drawing.Size(122, 22);
+            this.lPremio.Size = new System.Drawing.Size(127, 22);
             this.lPremio.Text = "Premios";
             this.lPremio.Click += new System.EventHandler(this.lPremio_Click);
             // 
             // lCompra
             // 
+            this.lCompra.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lCompraTodas,
+            this.lCompraCliente});
             this.lCompra.Name = "lCompra";
-            this.lCompra.Size = new System.Drawing.Size(122, 22);
+            this.lCompra.Size = new System.Drawing.Size(127, 22);
             this.lCompra.Text = "Compras";
-            this.lCompra.Click += new System.EventHandler(this.lCompra_Click);
+            // 
+            // lCompraTodas
+            // 
+            this.lCompraTodas.Name = "lCompraTodas";
+            this.lCompraTodas.Size = new System.Drawing.Size(137, 22);
+            this.lCompraTodas.Text = "Todas";
+            this.lCompraTodas.Click += new System.EventHandler(this.lCompraTodas_Click);
+            // 
+            // lCompraCliente
+            // 
+            this.lCompraCliente.Name = "lCompraCliente";
+            this.lCompraCliente.Size = new System.Drawing.Size(137, 22);
+            this.lCompraCliente.Text = "Por Cliente";
+            this.lCompraCliente.Click += new System.EventHandler(this.lCompraCliente_Click);
             // 
             // listadoDG
             // 
@@ -164,13 +189,6 @@
             this.lTitulo.Size = new System.Drawing.Size(287, 20);
             this.lTitulo.TabIndex = 2;
             this.lTitulo.Text = "Seleccione Algún Listado Para Ver";
-            // 
-            // vaciarToolStripMenuItem
-            // 
-            this.vaciarToolStripMenuItem.Name = "vaciarToolStripMenuItem";
-            this.vaciarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.vaciarToolStripMenuItem.Text = "vaciar";
-            this.vaciarToolStripMenuItem.Click += new System.EventHandler(this.vaciarToolStripMenuItem_Click);
             // 
             // FrmSupermercado
             // 
@@ -205,8 +223,10 @@
         private System.Windows.Forms.ToolStripMenuItem lPremio;
         private System.Windows.Forms.ToolStripMenuItem nPremio;
         private System.Windows.Forms.ToolStripMenuItem nCompra;
-        private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrar;
         private System.Windows.Forms.ToolStripMenuItem lCompra;
-        private System.Windows.Forms.ToolStripMenuItem vaciarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vaciar;
+        private System.Windows.Forms.ToolStripMenuItem lCompraTodas;
+        private System.Windows.Forms.ToolStripMenuItem lCompraCliente;
     }
 }

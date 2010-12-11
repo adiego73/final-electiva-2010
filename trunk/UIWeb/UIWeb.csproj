@@ -60,6 +60,7 @@
     <Content Include="Controles\Ingreso.ascx" />
     <Content Include="Controles\Minformacion.ascx" />
     <Content Include="Controles\MisPremios.ascx" />
+    <Content Include="Controles\SolicitudPremios.ascx" />
     <Content Include="imagenes\logo.jpg" />
     <Content Include="index.aspx" />
     <Content Include="imagenes\iconos\vwicn001.gif" />
@@ -248,6 +249,7 @@
     <Content Include="imagenes\iconos\vwicn182.gif" />
     <Content Include="imagenes\iconos\vwicn183.gif" />
     <Content Include="indexUsuarioComun.aspx" />
+    <Content Include="indexUsuarioPrivilegiado.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +302,13 @@
     <Compile Include="Controles\MisPremios.ascx.designer.cs">
       <DependentUpon>MisPremios.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\SolicitudPremios.ascx.cs">
+      <DependentUpon>SolicitudPremios.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\SolicitudPremios.ascx.designer.cs">
+      <DependentUpon>SolicitudPremios.ascx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>index.aspx</DependentUpon>
@@ -313,6 +322,13 @@
     </Compile>
     <Compile Include="indexUsuarioComun.aspx.designer.cs">
       <DependentUpon>indexUsuarioComun.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="indexUsuarioPrivilegiado.aspx.cs">
+      <DependentUpon>indexUsuarioPrivilegiado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="indexUsuarioPrivilegiado.aspx.designer.cs">
+      <DependentUpon>indexUsuarioPrivilegiado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

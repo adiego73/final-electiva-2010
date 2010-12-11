@@ -53,6 +53,7 @@ namespace UIWeb
                     if (Ingreso1.usuario.Cliente == null)
                     {
                         // usuario administrador
+                        Response.Redirect("indexUsuarioPrivilegiado.aspx");
                     }
                     else
                     {

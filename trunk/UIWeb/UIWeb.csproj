@@ -61,6 +61,7 @@
     <Content Include="Controles\Minformacion.ascx" />
     <Content Include="Controles\MisPremios.ascx" />
     <Content Include="Controles\SolicitudPremios.ascx" />
+    <Content Include="Controles\StockPremios.ascx" />
     <Content Include="imagenes\logo.jpg" />
     <Content Include="index.aspx" />
     <Content Include="imagenes\iconos\vwicn001.gif" />
@@ -308,6 +309,13 @@
     </Compile>
     <Compile Include="Controles\SolicitudPremios.ascx.designer.cs">
       <DependentUpon>SolicitudPremios.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\StockPremios.ascx.cs">
+      <DependentUpon>StockPremios.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\StockPremios.ascx.designer.cs">
+      <DependentUpon>StockPremios.ascx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>

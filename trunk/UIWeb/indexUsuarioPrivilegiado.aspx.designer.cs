@@ -23,6 +23,15 @@ namespace UIWeb {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// Control lNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lNombre;
+        
+        /// <summary>
         /// Control menuPNL.
         /// </summary>
         /// <remarks>
@@ -57,5 +66,14 @@ namespace UIWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::UIWeb.Controles.SolicitudPremios SolicitudPremios1;
+        
+        /// <summary>
+        /// Control StockPremios1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::UIWeb.Controles.StockPremios StockPremios1;
     }
 }

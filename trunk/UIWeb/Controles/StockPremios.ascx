@@ -1,6 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SolicitudPremios.ascx.cs" Inherits="UIWeb.Controles.SolicitudPremios" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StockPremios.ascx.cs" Inherits="UIWeb.Controles.StockPremios" %>
 <hr style="margin-left: 15px" />
-<asp:GridView ID="gvSolicitudPremios" runat="server" BorderStyle="Solid" Width="613px" 
+<asp:GridView ID="gvStockPremios" runat="server" BorderStyle="Solid" Width="613px" 
     BorderWidth="1px" style="margin-left: 17px">
     <RowStyle BorderStyle="Solid" BorderWidth="1px" 
         Height="15px" />

@@ -626,6 +626,20 @@ namespace Logic
                 { throw exc; }
             }
             
+            //Devuelve todos los canjes que se hicieron de un determinado premio
+            public static double traerCanjesPorPremio(int codPremio)
+            {
+                try
+                {
+                    DBCanje db = new DBCanje();
+                    return db.traerCanjesPorPremio(codPremio);
+                }
+                catch (ExcepcionGral exc)
+                { throw exc; }
+
+            }
+            //---- Fin Consultas de Canjes
+            
         #endregion
 
         #region creacion de los List a partir de los dataset recuperados de la DB

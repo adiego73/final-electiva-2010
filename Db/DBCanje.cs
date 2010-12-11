@@ -213,6 +213,45 @@ namespace Db
             }
         }
 
+        //Se obtienen todos los canjes realizados para un determinado premio
+        public double traerCanjesPorPremio(int cod)
+        {
+            SqlConnection conn = null;
+            try
+            {
+                try
+                {
+                    conn = new SqlConnection(DBGeneral.StrConn);
+                    conn.Open();
+                }
+                catch (SqlException e)
+                {
+                    ExcepcionGral exc = new ExcepcionGral();
+                    exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
+                    throw exc;
+                }
+
+                string sql = "SELECT COUNT(*) FROM Canje WHERE PRE_Codigo = @Cod;";
+
+                Parametros col = new Parametros();
+                col.Add(Parametros.CargarParametro("@Cod", TipoDato.Entero, cod));
+                object rta = ParaDB.EjecutarConsulta(sql, col, conn);
+                double canjes;
+                if (Validaciones.EsVacio(rta))
+                    canjes = 0;
+                else
+                    canjes = Conversiones.ADouble(rta);
+                conn.Close();
+                return canjes;
+            }
+            catch (ExcepcionGral exc)
+            {
+                this.Dispose();
+                throw exc;
+            }
+
+        }
+
         #endregion
 
         #region Destructores

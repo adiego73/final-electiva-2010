@@ -22,8 +22,6 @@ namespace UIWeb
             if (!IsPostBack)
                 this.ocultarTodo();
             
-
-
             if (Request["dni"] != null && Request["id"] != null && Session["Usuario"] == null)
             {
                 Session["Usuario"] = ASupermercado.traerUsuario(int.Parse(Request["dni"]), int.Parse(Request["id"]));
@@ -72,6 +70,13 @@ namespace UIWeb
             CatalogoUsuario1.Visible = false;
             Canjear1.Visible = false;
             Minformacion1.Visible = false;
+            MisPremios1.Visible = false;
+        }
+
+        protected void menu_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("index.aspx");
         }
     }
 }

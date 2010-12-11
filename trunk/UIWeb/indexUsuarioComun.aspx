@@ -32,6 +32,25 @@
                     </td>
                 </tr>
                 <tr>
+                    <td colspan="2" align="right">
+                    <asp:Panel ID="menuPNL" runat="server" BackColor="#FC713D" BorderColor="#333333"
+                        BorderStyle="Solid" BorderWidth="1px" Width="100%">
+                        <asp:Menu ID="menu" runat="server" BackColor="#FC713D" BorderWidth="0px" Font-Bold="True"
+                            Font-Names="Arial" Font-Size="Small" ForeColor="#333333" Orientation="Horizontal"
+                            OnMenuItemClick="menu_MenuItemClick">
+                            <DynamicHoverStyle BackColor="#97BCFB" />
+                            <DynamicSelectedStyle BackColor="#F1F7FE" />
+                            <DynamicMenuItemStyle BackColor="#CEE0FD" BorderColor="#003366" BorderStyle="Solid"
+                                BorderWidth="1px" Font-Bold="True" Font-Names="Arial" ForeColor="#003366" />
+                            <Items>
+                                <asp:MenuItem Text="Log Out" Value="logOut"></asp:MenuItem>
+                            </Items>
+                        </asp:Menu>
+                    </asp:Panel>
+
+                    </td>
+                </tr>
+                <tr>
                     <td style="float: left; position: relative; top: 0px; width: 145px">
                         <asp:TreeView ID="ArbolOpciones" runat="server" ImageSet="Arrows" OnSelectedNodeChanged="ArbolOpciones_SelectedNodeChanged">
                             <ParentNodeStyle Font-Bold="False" />

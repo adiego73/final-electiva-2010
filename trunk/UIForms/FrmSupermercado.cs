@@ -143,25 +143,14 @@ namespace UIForms
                 }
             }
 
-            private void lCompra_Click(object sender, EventArgs e)
-            {
-                lTitulo.Text = " - Listado de todos las COMPRAS - ";
-                lTitulo.TextAlign = ContentAlignment.MiddleCenter;
-                try
-                {
-                    this.cargarGridView(ASupermercado.listarTodasLasCompras());
-                }
-                catch (ExcepcionGral exc)
-                {
-                    exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
-                    if (!Validaciones.EsVacio(exc.Message))
-                        MessageBox.Show(exc.Message);
-                }
-            }
+            //private void lCompra_Click(object sender, EventArgs e)
+            //{
+                
+            //}
 
         //---- Fin Opciones de Compras
 
-            private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+            private void cerrar_Click(object sender, EventArgs e)
             {
                 this.Close();
             }
@@ -194,24 +183,85 @@ namespace UIForms
                             FrmCompra frmNuevaCompra = new FrmCompra();
                             frmNuevaCompra.Cliente = ASupermercado.traerCliente(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value));
                             frmNuevaCompra.ShowDialog();
-                            this.lCompra_Click(null, null);
+                            this.lCompraTodas_Click(null, null);
                         }
                         catch (ExcepcionGral exc)
                         {
                             MessageBox.Show(exc.Message);
                         }
                     }
-                    else if (listadoDG.SelectedCells[0].OwningColumn.Name == "EditarPremio")
+                    else 
                     {
-                        FrmPremioEdicion frmEditarPre = new FrmPremioEdicion();
-                        frmEditarPre.Premio = ASupermercado.traerPremio(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Codigo"].Value));
-                        frmEditarPre.ShowDialog();
-                        this.lPremio_Click(null, null);
+                        if (listadoDG.SelectedCells[0].OwningColumn.Name == "EditarPremio")
+                        {
+                            FrmPremioEdicion frmEditarPre = new FrmPremioEdicion();
+                            frmEditarPre.Premio = ASupermercado.traerPremio(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Codigo"].Value));
+                            frmEditarPre.ShowDialog();
+                            this.lPremio_Click(null, null);
+                        }
+                        else if (listadoDG.SelectedCells[0].OwningColumn.Name == "VerCompras")
+                        {
+                            try
+                            {
+                                this.cargarGridView(ASupermercado.listarTodasLasComprasPorUsuario(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value)));
+                            }
+                            catch (ExcepcionGral exc)
+                            {
+                                exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
+                                if (!Validaciones.EsVacio(exc.Message))
+                                    MessageBox.Show(exc.Message);
+                            }
+                        }
                     }
                 }
             }
         
         //---- Fin de Clic en el DataGrid
+
+            private void vaciar_Click(object sender, EventArgs e)
+            {
+                ASupermercado.eliminar();
+            }
+
+            private void lCompraTodas_Click(object sender, EventArgs e)
+            {
+                lTitulo.Text = " - Listado de todas las COMPRAS - ";
+                lTitulo.TextAlign = ContentAlignment.MiddleCenter;
+                try
+                {
+                    this.cargarGridView(ASupermercado.listarTodasLasCompras());
+                }
+                catch (ExcepcionGral exc)
+                {
+                    exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
+                    if (!Validaciones.EsVacio(exc.Message))
+                        MessageBox.Show(exc.Message);
+                }
+            }
+
+            private void lCompraCliente_Click(object sender, EventArgs e)
+            {
+                lTitulo.Text = " - Listado de todas las COMPRAS por CLIENTE - ";
+                lTitulo.TextAlign = ContentAlignment.MiddleCenter;
+                try
+                {
+                    this.cargarGridView(ASupermercado.listarUsuarios());
+                    DataGridViewLinkColumn lc = new DataGridViewLinkColumn();
+                    lc.Name = "VerCompras";
+                    lc.HeaderText = "";
+                    lc.Text = "Ver Compras";
+                    lc.UseColumnTextForLinkValue = true;
+                    lc.ReadOnly = true;
+                    lc.Width = 100;
+                    listadoDG.Columns.Add(lc);
+                }
+                catch (ExcepcionGral exc)
+                {
+                    exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
+                    if (!Validaciones.EsVacio(exc.Message))
+                        MessageBox.Show(exc.Message);
+                }
+            }
 
         #endregion
 
@@ -349,9 +399,5 @@ namespace UIForms
 
         #endregion
 
-            private void vaciarToolStripMenuItem_Click(object sender, EventArgs e)
-            {
-                ASupermercado.eliminar();
-            }
     }
 }

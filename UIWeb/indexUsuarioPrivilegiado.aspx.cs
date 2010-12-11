@@ -19,7 +19,10 @@ namespace UIWeb
             if (Session["Usuario"] == null)
                 Response.Redirect("index.aspx");
             else
+            {
                 usuario = (Usuario)Session["Usuario"];
+                lNombre.Text = "Bienvenido: " + usuario.User;
+            }
         }
 
         protected void ArbolOpciones_SelectedNodeChanged(object sender, EventArgs e)
@@ -32,6 +35,7 @@ namespace UIWeb
                     break;
                 case "Stock":
                     this.ocultarTodo();
+                    StockPremios1.Visible = true;
                     break;
                 case "Rango":
                     this.ocultarTodo();
@@ -42,6 +46,7 @@ namespace UIWeb
         private void ocultarTodo()
         {
             SolicitudPremios1.Visible = false;
+            StockPremios1.Visible = false;
         }
 
         protected void menu_MenuItemClick(object sender, MenuEventArgs e)

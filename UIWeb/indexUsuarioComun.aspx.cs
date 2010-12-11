@@ -21,17 +21,27 @@ namespace UIWeb
         {
             if (!IsPostBack)
                 this.ocultarTodo();
-            
-            if (Request["dni"] != null && Request["id"] != null && Session["Usuario"] == null)
+            try
             {
-                Session["Usuario"] = ASupermercado.traerUsuario(int.Parse(Request["dni"]), int.Parse(Request["id"]));
+                if (Request["dni"] != null && Request["id"] != null && Session["Usuario"] == null)
+                {
+                    Session["Usuario"] = ASupermercado.traerUsuario(int.Parse(Request["dni"]), int.Parse(Request["id"]));
+
+                    if (Session["Usuario"] == null)
+                        throw new Exception();
+                }
+                else if (Session["Usuario"] == null)
+                {
+                    Response.Redirect("index.aspx");
+                }
             }
-            else if (Session["Usuario"] == null)
+            catch (Exception ex)
             {
                 Response.Redirect("index.aspx");
             }
             // else el usuario esta en la sesion
             usuario = (Usuario)Session["Usuario"];
+            lNombre.Text = usuario.Cliente.Apellido + ", " + usuario.Cliente.Nombre;
 
         }
 

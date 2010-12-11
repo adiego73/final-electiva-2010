@@ -38,7 +38,7 @@ namespace UIForms
                 lTitulo.TextAlign = ContentAlignment.MiddleCenter;
                 try
                 {
-                    this.cargarGridView(ASupermercado.listarTodosLosClientes());
+                    this.cargarGridView(ASupermercado.listarUsuarios());
                     DataGridViewLinkColumn lc = new DataGridViewLinkColumn();
                     lc.Name = "EditarCliente";
                     lc.HeaderText = "";
@@ -150,11 +150,6 @@ namespace UIForms
                 try
                 {
                     this.cargarGridView(ASupermercado.listarTodasLasCompras());
-                    DataGridViewLinkColumn lc = new DataGridViewLinkColumn();
-                    lc.UseColumnTextForLinkValue = true;
-                    lc.ReadOnly = true;
-                    lc.Width = 50;
-                    listadoDG.Columns.Add(lc);
                 }
                 catch (ExcepcionGral exc)
                 {
@@ -258,30 +253,33 @@ namespace UIForms
             {
                 listadoDG.Columns.Clear();
                 DataTable dt = new DataTable();
-                dt.Columns.Add("Dni");
+                
+                dt.Columns.Add("Id de Usuario");
                 dt.Columns.Add("Usuario");
                 int i = 0;
                 foreach (Usuario u in listaUsuarios)
                 {
                     dt.Rows.Add(new Object[]{
                     "" });
+
+                    dt.Rows[i].SetField("Usuario", u.User);
                     if (!Validaciones.EsVacio((object)u.Cliente))
                     {
-                        dt.Rows[i].SetField("Dni", u.Cliente.Dni);
+                        dt.Rows[i].SetField("Id de Usuario", ASupermercado.recuperarIdUsuario(u.Cliente.Dni));
                         if (dt.Columns.Count == 2)
                         {
+                            dt.Columns.Add("Dni");
                             dt.Columns.Add("Nombre y apellido");
-                            dt.Columns.Add("Id de Usuario");
                         }
                         if (dt.Columns.Count > 2)
                         {
+                            dt.Rows[i].SetField("Dni", u.Cliente.Dni);
                             dt.Rows[i].SetField("Nombre y Apellido", u.Cliente.Nombre + " " + u.Cliente.Apellido);
-                            dt.Rows[i].SetField("Id de Usuario", ASupermercado.recuperarIdUsuario(u.Cliente.Dni));
+                            
                         }
-                    }
-                    else
-                        dt.Rows[i].SetField("Dni", "Privilegiado");
-                    dt.Rows[i].SetField("Usuario", u.User);
+                    }else
+                        dt.Rows[i].SetField("Id de Usuario", ASupermercado.recuperarIdUsuario(u.User));
+
                     i++;
                 }
                 listadoDG.DataSource = dt;

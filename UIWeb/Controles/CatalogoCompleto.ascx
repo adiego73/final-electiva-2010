@@ -11,21 +11,21 @@
         <asp:ListItem>50000</asp:ListItem>
     </asp:DropDownList>&nbsp;&nbsp;
     <asp:Button ID="Submit" runat="server" onclick="Submit_Click" 
-        Text="Consultar" />
+        Text="Consultar" Font-Bold="True" Font-Names="Arial" ForeColor="#FC713D" />
         
     <hr />
         
 </div>
 <asp:GridView ID="GridView1" runat="server" BorderStyle="Solid" Width="649px" 
-    BorderWidth="1px">
-    <RowStyle BorderStyle="Solid" BackColor="#CCFFCC" BorderWidth="1px" 
+    BorderWidth="1px" BorderColor="#333333">
+    <RowStyle BorderStyle="Solid" BorderWidth="1px" 
         Height="15px" />
     <SelectedRowStyle BorderStyle="None" />
     <HeaderStyle BorderStyle="Solid" Font-Bold="True" HorizontalAlign="Center" 
-        VerticalAlign="Middle" BackColor="#FFFF66" BorderColor="Black" 
+        VerticalAlign="Middle" BackColor="#FC713D" BorderColor="Black" 
         BorderWidth="1px" Height="15px" />
     <EditRowStyle BorderStyle="None" />
-    <AlternatingRowStyle BackColor="#FFFFCC" />
+    <AlternatingRowStyle BackColor="#FFCC66" />
 </asp:GridView>
 <hr />
 

@@ -57,7 +57,7 @@ namespace UIWeb
                     else
                     {
                         // usuario comun.
-                        int id = Logic.ASupermercado.recuperarIdUsuario(Ingreso1.usuario.Cliente.Dni);
+                        int id = Logic.ASupermercado.recuperarIdUsuario(Ingreso1.usuario.User);
                         int dni = Ingreso1.usuario.Cliente.Dni;
                         Response.Redirect("indexUsuarioComun.aspx?id=" + id + "&dni=" + dni);
                     }

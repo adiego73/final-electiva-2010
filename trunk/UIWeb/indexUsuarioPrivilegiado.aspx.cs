@@ -39,6 +39,7 @@ namespace UIWeb
                     break;
                 case "Rango":
                     this.ocultarTodo();
+                    RangoPuntajes1.Visible = true;
                     break;
             }
         }
@@ -47,6 +48,7 @@ namespace UIWeb
         {
             SolicitudPremios1.Visible = false;
             StockPremios1.Visible = false;
+            RangoPuntajes1.Visible = false;
         }
 
         protected void menu_MenuItemClick(object sender, MenuEventArgs e)

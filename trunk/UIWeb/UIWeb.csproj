@@ -60,6 +60,7 @@
     <Content Include="Controles\Ingreso.ascx" />
     <Content Include="Controles\Minformacion.ascx" />
     <Content Include="Controles\MisPremios.ascx" />
+    <Content Include="Controles\RangoPuntajes.ascx" />
     <Content Include="Controles\SolicitudPremios.ascx" />
     <Content Include="Controles\StockPremios.ascx" />
     <Content Include="imagenes\logo.jpg" />
@@ -302,6 +303,13 @@
     </Compile>
     <Compile Include="Controles\MisPremios.ascx.designer.cs">
       <DependentUpon>MisPremios.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\RangoPuntajes.ascx.cs">
+      <DependentUpon>RangoPuntajes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\RangoPuntajes.ascx.designer.cs">
+      <DependentUpon>RangoPuntajes.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controles\SolicitudPremios.ascx.cs">
       <DependentUpon>SolicitudPremios.ascx</DependentUpon>

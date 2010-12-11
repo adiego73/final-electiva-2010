@@ -28,8 +28,9 @@ namespace UIWeb.Controles
             lExcepciones.Visible = false;
             usuario = (Usuario)Session["Usuario"];
 
-            if (!IsPostBack)
-                this.completarCatalogo(ASupermercado.calcularPuntajeTotal(usuario.Cliente));
+            //if (!IsPostBack)
+            this.completarCatalogo(ASupermercado.calcularPuntajeTotal(usuario.Cliente));
+            Puntaje.Text = ASupermercado.calcularPuntajeTotal(usuario.Cliente).ToString();
         }
 
         public void Click_Canjear(object o, EventArgs e)
@@ -38,7 +39,9 @@ namespace UIWeb.Controles
             {
                 int idPremio = Conversiones.AInt(cCatalogo.SelectedRow.Cells[1].Text);
                 ASupermercado.canjearPremio(idPremio, usuario.Cliente);
-                this.Submit_Click(null, null);// simulo el click
+                //this.Submit_Click(null, null);// simulo el click
+                this.completarCatalogo(ASupermercado.calcularPuntajeTotal(usuario.Cliente));
+                Puntaje.Text = ASupermercado.calcularPuntajeTotal(usuario.Cliente).ToString();
 
                 lExcepciones.Visible = true;
                 lExcepciones.Text = "El premio se canjeo correctamente. Felicitaciones!!";
@@ -98,7 +101,7 @@ namespace UIWeb.Controles
             cCatalogo.DataBind();
         }
 
-        private void completarCatalogo()
+        /*private void completarCatalogo()
         {
             cCatalogo.Columns.Clear();
             cCatalogo.DataSource = null;
@@ -137,19 +140,6 @@ namespace UIWeb.Controles
 
             cCatalogo.DataSource = listaPremios;
             cCatalogo.DataBind();
-        }
-
-        protected void Submit_Click(object sender, EventArgs e)
-        {
-            switch (cPuntajes.SelectedValue)
-            {
-                case "Todos":
-                    this.completarCatalogo();
-                    break;
-                default:
-                    this.completarCatalogo(int.Parse(cPuntajes.SelectedValue));
-                    break;
-            }
-        }
+        }*/
     }
 }

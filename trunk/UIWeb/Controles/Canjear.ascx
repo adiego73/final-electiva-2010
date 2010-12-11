@@ -1,18 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Canjear.ascx.cs" Inherits="UIWeb.Controles.Canjear" %>
 <div>
-    Filtro por puntaje&nbsp;&nbsp;<asp:DropDownList ID="cPuntajes" runat="server" Height="20px" 
-        Width="118px">
-        <asp:ListItem Selected="True">Todos</asp:ListItem>
-        <asp:ListItem>100</asp:ListItem>
-        <asp:ListItem>300</asp:ListItem>
-        <asp:ListItem>500</asp:ListItem>
-        <asp:ListItem>1000</asp:ListItem>
-        <asp:ListItem>10000</asp:ListItem>
-        <asp:ListItem>50000</asp:ListItem>
-    </asp:DropDownList>&nbsp;&nbsp;
-    <asp:Button ID="cSubmit" runat="server" onclick="Submit_Click" 
-        Text="Consultar" Font-Bold="True" Font-Names="Arial" ForeColor="#FC713D" />
-        
+    Puntaje Total:&nbsp;&nbsp;<asp:Label ID="Puntaje" runat="server"></asp:Label>
     <hr />
         
 </div>

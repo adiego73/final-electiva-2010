@@ -23,10 +23,9 @@
     </style>
 </head>
 <body>
-    <div style="padding-left: 25%">
-        <form id="form1" runat="server">
-        <div style="width: 800px">
-            <table>
+    <div align="center">
+        <form id="form1" runat="server" visible="True">
+        <table style="width: 800px" align="center">
                 <tr>
                     <td colspan="2">
                         <img alt="logo" src="imagenes/logo.jpg" style="width: 802px; height: 100px" />
@@ -61,7 +60,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
         </form>
     </div>
 </body>

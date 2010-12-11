@@ -21,8 +21,8 @@ namespace UIWeb.Controles
         protected void Page_Load(object sender, EventArgs e)
         {
             usuario = (Usuario)Session["Usuario"];
-            if (!IsPostBack)
-                this.completarMisPremios();
+            //if (!IsPostBack)
+            this.completarMisPremios();
         }
 
         private void completarMisPremios()
@@ -37,7 +37,7 @@ namespace UIWeb.Controles
             listaPremios.Columns.Add("Puntos");
 
             List<Canje> alCanjes = ASupermercado.listarTodosLosCanjes(usuario.Cliente.Dni); // todos los canjes que hizo el cliente
-            
+
             foreach (Canje c in alCanjes)
             {
                 listaPremios.Rows.Add(new Object[] { "" });

@@ -26,20 +26,16 @@ namespace UIWeb.Controles
             lException.Visible = false;
             usuario = (Usuario)Session["Usuario"];
 
-            if (!IsPostBack)
-            {
-                tbApellidoNombre.Text = usuario.Cliente.Apellido + ", " + usuario.Cliente.Nombre;
-                tbApellidoNombre.Enabled = false;
-                tbUsuario.Text = usuario.User;
-                tbProvincia.Text = usuario.Cliente.Provincia;
-                tbTelefono.Text = usuario.Cliente.Telefono;
-                tbMail.Text = usuario.Cliente.Mail;
-                tbDni.Text = usuario.Cliente.Dni.ToString();
-                tbDni.Enabled = false;
-                tbPuntos.Text = ASupermercado.calcularPuntajeTotal(usuario.Cliente).ToString();
-                tbPuntos.Enabled = false;
-            }
-
+            tbApellidoNombre.Text = usuario.Cliente.Apellido + ", " + usuario.Cliente.Nombre;
+            tbApellidoNombre.Enabled = false;
+            tbUsuario.Text = usuario.User;
+            tbProvincia.Text = usuario.Cliente.Provincia;
+            tbTelefono.Text = usuario.Cliente.Telefono;
+            tbMail.Text = usuario.Cliente.Mail;
+            tbDni.Text = usuario.Cliente.Dni.ToString();
+            tbDni.Enabled = false;
+            tbPuntos.Text = ASupermercado.calcularPuntajeTotal(usuario.Cliente).ToString();
+            tbPuntos.Enabled = false;
         }
 
         //protected void btModificar_Click(object sender, EventArgs e)
@@ -54,7 +50,7 @@ namespace UIWeb.Controles
         //    {
         //        ASupermercado.modificar(usuario);
         //        ASupermercado.modificar(usuario.Cliente);
-                
+
         //        lException.Visible = true;
         //        lException.Text = "La informacion se modifico correctamente.";
         //        lException.ForeColor = new System.Drawing.Color();

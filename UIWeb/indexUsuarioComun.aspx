@@ -51,12 +51,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="float: left; position: relative; top: 0px; width: 145px" bgcolor="#FC713D">
+                    <td style="float: left; position: relative; top: 0px; width: 145px" >
                         <asp:TreeView ID="ArbolOpciones" runat="server" ImageSet="Arrows" 
-                            OnSelectedNodeChanged="ArbolOpciones_SelectedNodeChanged" BackColor="#FC713D" 
-                            BorderColor="#333333">
+                            OnSelectedNodeChanged="ArbolOpciones_SelectedNodeChanged" Font-Bold="True" 
+                            ForeColor="#CC3300">
                             <ParentNodeStyle Font-Bold="False" />
-                            <HoverNodeStyle Font-Underline="True" ForeColor="#000000" Font-Bold="true" />
+                            <HoverNodeStyle Font-Underline="True" ForeColor="#333333" Font-Bold="true" />
                             <SelectedNodeStyle Font-Underline="True" ForeColor="#000000" Font-Bold="true" HorizontalPadding="0px"
                                 VerticalPadding="0px" />
                             <Nodes>
@@ -68,7 +68,7 @@
                                 <asp:TreeNode Text="Mis Premios" Value="MisPremios"></asp:TreeNode>
                                 <asp:TreeNode Text="Mi Informacion" Value="MiInformacion"></asp:TreeNode>
                             </Nodes>
-                            <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="5px"
+                            <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="#FF3300" HorizontalPadding="5px"
                                 NodeSpacing="0px" VerticalPadding="0px" />
                         </asp:TreeView>
                     </td>
@@ -76,7 +76,7 @@
                         <uc1:CatalogoCompleto ID="CatalogoCompleto1" runat="server" />
                         <uc2:CatalogoUsuario ID="CatalogoUsuario1" runat="server" />
                         <uc3:Canjear ID="Canjear1" runat="server" />
-                        <uc4:Minformacion ID="Minformacion1" runat="server" />
+                        <table style="width:650px"><tr><td><uc4:Minformacion ID="Minformacion1" runat="server" /></td></tr></table>
                         <uc5:MisPremios ID="MisPremios1" runat="server" />
                     </td>
                 </tr>

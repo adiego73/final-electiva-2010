@@ -31,7 +31,6 @@ namespace UIWeb.Controles
                 tbApellidoNombre.Text = usuario.Cliente.Apellido + ", " + usuario.Cliente.Nombre;
                 tbApellidoNombre.Enabled = false;
                 tbUsuario.Text = usuario.User;
-                tbPassword.Text = usuario.Contrasenia;
                 tbProvincia.Text = usuario.Cliente.Provincia;
                 tbTelefono.Text = usuario.Cliente.Telefono;
                 tbMail.Text = usuario.Cliente.Mail;
@@ -43,35 +42,35 @@ namespace UIWeb.Controles
 
         }
 
-        protected void btModificar_Click(object sender, EventArgs e)
-        {
-            usuario.User = tbUsuario.Text;
-            usuario.Contrasenia = tbPassword.Text;
-            usuario.Cliente.Provincia = tbProvincia.Text;
-            usuario.Cliente.Telefono = tbTelefono.Text;
-            usuario.Cliente.Mail = tbMail.Text;
+        //protected void btModificar_Click(object sender, EventArgs e)
+        //{
+        //    usuario.User = tbUsuario.Text;
+        //    usuario.Contrasenia = tbPassword.Text;
+        //    usuario.Cliente.Provincia = tbProvincia.Text;
+        //    usuario.Cliente.Telefono = tbTelefono.Text;
+        //    usuario.Cliente.Mail = tbMail.Text;
 
-            try
-            {
-                ASupermercado.modificar(usuario);
-                ASupermercado.modificar(usuario.Cliente);
+        //    try
+        //    {
+        //        ASupermercado.modificar(usuario);
+        //        ASupermercado.modificar(usuario.Cliente);
                 
-                lException.Visible = true;
-                lException.Text = "La informacion se modifico correctamente.";
-                lException.ForeColor = new System.Drawing.Color();
-                lException.ForeColor = System.Drawing.ColorTranslator.FromHtml("#46FF96");
-                lException.BackColor = new System.Drawing.Color();
-                lException.BackColor = System.Drawing.ColorTranslator.FromHtml("#333333");
-            }
-            catch (ExcepcionGral exc)
-            {
-                lException.Visible = true;
-                lException.Text = exc.Message;
-                lException.ForeColor = new System.Drawing.Color();
-                lException.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
-                lException.BackColor = new System.Drawing.Color();
-                lException.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
-            }
-        }
+        //        lException.Visible = true;
+        //        lException.Text = "La informacion se modifico correctamente.";
+        //        lException.ForeColor = new System.Drawing.Color();
+        //        lException.ForeColor = System.Drawing.ColorTranslator.FromHtml("#46FF96");
+        //        lException.BackColor = new System.Drawing.Color();
+        //        lException.BackColor = System.Drawing.ColorTranslator.FromHtml("#333333");
+        //    }
+        //    catch (ExcepcionGral exc)
+        //    {
+        //        lException.Visible = true;
+        //        lException.Text = exc.Message;
+        //        lException.ForeColor = new System.Drawing.Color();
+        //        lException.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+        //        lException.BackColor = new System.Drawing.Color();
+        //        lException.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+        //    }
+        //}
     }
 }

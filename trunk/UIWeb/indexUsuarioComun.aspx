@@ -51,8 +51,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="float: left; position: relative; top: 0px; width: 145px">
-                        <asp:TreeView ID="ArbolOpciones" runat="server" ImageSet="Arrows" OnSelectedNodeChanged="ArbolOpciones_SelectedNodeChanged">
+                    <td style="float: left; position: relative; top: 0px; width: 145px" bgcolor="#FC713D">
+                        <asp:TreeView ID="ArbolOpciones" runat="server" ImageSet="Arrows" 
+                            OnSelectedNodeChanged="ArbolOpciones_SelectedNodeChanged" BackColor="#FC713D" 
+                            BorderColor="#333333">
                             <ParentNodeStyle Font-Bold="False" />
                             <HoverNodeStyle Font-Underline="True" ForeColor="#000000" Font-Bold="true" />
                             <SelectedNodeStyle Font-Underline="True" ForeColor="#000000" Font-Bold="true" HorizontalPadding="0px"

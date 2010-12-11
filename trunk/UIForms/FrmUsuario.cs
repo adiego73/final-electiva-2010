@@ -33,6 +33,11 @@ namespace UIForms
                         errUsuarioLB.Visible = true;
                         exc.AgregarError("El usuario no puede quedar en blanco");
                     }
+                    else if (ASupermercado.existeUsuario(usuarioTX.Text))
+                    {
+                        errUsuarioLB.Visible = true;
+                        exc.AgregarError("El nombre de usuario ya existe");
+                    }
                     if (Validaciones.EsVacio(contraseniaTX.Text))
                     {
                         errContraseniaLB.Visible = true;

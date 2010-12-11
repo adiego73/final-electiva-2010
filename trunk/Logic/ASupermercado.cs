@@ -391,6 +391,34 @@ namespace Logic
                 }
             }
 
+            public static List<Usuario> listarUsuarios()
+            {
+                try
+                {
+                    DBUsuario db = new DBUsuario();
+                    DataSet ds = db.listar();
+                    List<Usuario> usuarios = ASupermercado.crearListaUsuarios(ds);
+                    return usuarios;
+                }
+                catch (ExcepcionGral exc)
+                {
+                    throw exc;
+                }
+            }
+
+            public static int recuperarIdUsuario(string usuario)
+            {
+                try
+                {
+                    DBUsuario db = new DBUsuario();
+                    return db.recuperarIdUsuario(usuario);
+                }
+                catch (ExcepcionGral exc)
+                {
+                    throw exc;
+                }
+            }
+
             public static int recuperarIdUsuario(int dni)
             {
                 try
@@ -440,7 +468,6 @@ namespace Logic
 
             public static bool existeUsuario(string usuario)
             {
-                //bool existe;
                 try
                 {
                     DBUsuario db = new DBUsuario();
@@ -507,7 +534,7 @@ namespace Logic
 
             //---- Fin Consultas de Premios
 
-            //Consultas de Compras ---- Jessi 05/12
+            //Consultas de Compras 
 
             public static List<Compra> listarTodasLasCompras()
             {

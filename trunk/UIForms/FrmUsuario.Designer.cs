@@ -102,6 +102,7 @@
             // 
             this.contraseniaTX.Location = new System.Drawing.Point(80, 69);
             this.contraseniaTX.Name = "contraseniaTX";
+            this.contraseniaTX.PasswordChar = '*';
             this.contraseniaTX.Size = new System.Drawing.Size(224, 20);
             this.contraseniaTX.TabIndex = 31;
             // 

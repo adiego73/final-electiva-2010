@@ -185,6 +185,71 @@ namespace Db
                 }
             }
 
+            public DataSet listar()
+            {
+                SqlConnection conn = null;
+                try
+                {
+                    try
+                    {
+                        conn = new SqlConnection(DBGeneral.StrConn);
+                        conn.Open();
+                    }
+                    catch (SqlException e)
+                    {
+                        ExcepcionGral exc = new ExcepcionGral();
+                        exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB: DBUsuario.listarPrivilegiados() -- " + e.Message, TipoError.ERRCONEXION);
+                        throw exc;
+                    }
+                    string sql = "SELECT * FROM Usuario WHERE CLI_Dni IS NOT NULL;";
+
+                    DataSet ds;
+                    ParaDB.EjecutarConsulta(sql, conn, out ds);
+                    conn.Close();
+                    return ds;
+                }
+                catch (ExcepcionGral e)
+                {
+                    if (conn.State == ConnectionState.Open)
+                        conn.Close();
+                    throw e;
+                }
+            }
+
+            public int recuperarIdUsuario(string usuario)
+            {
+                SqlConnection conn = null;
+                try
+                {
+                    conn = new SqlConnection(DBGeneral.StrConn);
+                    conn.Open();
+                }
+                catch (SqlException e)
+                {
+                    ExcepcionGral ex = new ExcepcionGral();
+                    ex.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB: DBUsuario.listarPrivilegiados() -- " + e.Message, TipoError.ERRCONEXION);
+                    throw ex;
+                }
+                try
+                {
+                    string sql = "SELECT USU_Codigo FROM Usuario where USU_Usuario = @Usuario;";
+
+                    Parametros col = new Parametros();
+                    col.Add(Parametros.CargarParametro("@Usuario", TipoDato.Cadena, usuario));
+
+                    object id = ParaDB.EjecutarConsulta(sql, col, conn);
+                    if (Validaciones.EsInt(id))
+                        return Conversiones.AInt(id);
+                    else
+                        return 0;
+                }
+                catch(ExcepcionGral exc)
+                {
+                    throw exc;
+                }
+
+            }
+
             public int recuperarIdUsuario(int dni)
             {
                 SqlConnection conn = null;
@@ -201,10 +266,10 @@ namespace Db
                 }
                 try
                 {
-                    string sql = "SELECT USU_Codigo FROM Usuario where CLI_Dni = @Dni;";
+                    string sql = "SELECT USU_Codigo FROM Usuario where CLI_Dni = @dni;";
 
                     Parametros col = new Parametros();
-                    col.Add(Parametros.CargarParametro("@Dni", TipoDato.Entero, dni));
+                    col.Add(Parametros.CargarParametro("@dni", TipoDato.Entero, dni));
 
                     object id = ParaDB.EjecutarConsulta(sql, col, conn);
                     if (Validaciones.EsInt(id))
@@ -212,7 +277,7 @@ namespace Db
                     else
                         return 0;
                 }
-                catch(ExcepcionGral exc)
+                catch (ExcepcionGral exc)
                 {
                     throw exc;
                 }

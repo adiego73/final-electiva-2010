@@ -75,5 +75,14 @@ namespace UIWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::UIWeb.Controles.StockPremios StockPremios1;
+        
+        /// <summary>
+        /// Control RangoPuntajes1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::UIWeb.Controles.RangoPuntajes RangoPuntajes1;
     }
 }

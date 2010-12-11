@@ -24,9 +24,10 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 800px; text-align: left" align="center">
-                    <asp:Panel ID="menuPNL" runat="server" BackColor="#FC713D" BorderColor="#333333"
-                        BorderStyle="Solid" BorderWidth="1px" Width="100%">
+            <td colspan="2" align="right" style="border: solid 1px #333333; background-color:#FC713D; height:16px">
+                    <div style="float:left; font-family:Arial; font-size:small; font-weight:bold; padding-left:5px; color:#333333">
+                        <asp:Panel ID="menuPNL" runat="server" BackColor="#FC713D" BorderColor="#333333"
+                        BorderStyle="Solid" BorderWidth="0px" Width="100%">
                         <asp:Menu ID="menu" runat="server" BackColor="#FC713D" BorderWidth="0px" Font-Bold="True"
                             Font-Names="Arial" Font-Size="Small" ForeColor="#333333" Orientation="Horizontal"
                             OnMenuItemClick="menu_MenuItemClick">
@@ -39,6 +40,11 @@
                             </Items>
                         </asp:Menu>
                     </asp:Panel>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td style="width: 800px; text-align: left" align="center">
                     <br />
                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 98%">
                         <tr>

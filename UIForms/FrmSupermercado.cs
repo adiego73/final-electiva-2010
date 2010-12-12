@@ -29,10 +29,10 @@ namespace UIForms
                 lTitulo.TextAlign = ContentAlignment.MiddleCenter;
                 FrmCliente frmNuevoCliente = new FrmCliente();
                 frmNuevoCliente.ShowDialog();
-                this.lCliente_Click(null, null);
+                this.lClientesActivos_Click(null, null);
             }
 
-            private void lCliente_Click(object sender, EventArgs e)
+            /*private void lCliente_Click(object sender, EventArgs e)
             {
                 lTitulo.Text = " - Listado de todos los clientes ACTIVOS - ";
                 lTitulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -52,6 +52,46 @@ namespace UIForms
                 {
                     exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
                     if(!Validaciones.EsVacio(exc.Message))
+                        MessageBox.Show(exc.Message);
+                }*/
+            //}
+
+            private void lClientesActivos_Click(object sender, EventArgs e)
+            {
+                lTitulo.Text = " - Listado de todos los clientes ACTIVOS - ";
+                lTitulo.TextAlign = ContentAlignment.MiddleCenter;
+                try
+                {
+                    this.cargarGridView(ASupermercado.listarUsuarios());
+                    DataGridViewLinkColumn lc = new DataGridViewLinkColumn();
+                    lc.Name = "EditarCliente";
+                    lc.HeaderText = "";
+                    lc.Text = "Editar";
+                    lc.UseColumnTextForLinkValue = true;
+                    lc.ReadOnly = true;
+                    lc.Width = 50;
+                    listadoDG.Columns.Add(lc);
+                }
+                catch (ExcepcionGral exc)
+                {
+                    exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
+                    if (!Validaciones.EsVacio(exc.Message))
+                        MessageBox.Show(exc.Message);
+                }
+            }
+            
+        private void lClientesInactivos_Click(object sender, EventArgs e)
+            {
+                lTitulo.Text = " - Listado de todos los clientes INACTIVOS - ";
+                lTitulo.TextAlign = ContentAlignment.MiddleCenter;
+                try
+                {
+                    this.cargarGridView(ASupermercado.traerClientesInactivos());
+                }
+                catch (ExcepcionGral exc)
+                {
+                    exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
+                    if (!Validaciones.EsVacio(exc.Message))
                         MessageBox.Show(exc.Message);
                 }
             }
@@ -167,7 +207,7 @@ namespace UIForms
                         FrmClienteEdicion frmEditarCli = new FrmClienteEdicion();
                         frmEditarCli.Cliente = ASupermercado.traerCliente(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value));
                         frmEditarCli.ShowDialog();
-                        this.lCliente_Click(null, null);
+                        this.lClientesActivos_Click(null, null);
                     }
                     catch (ExcepcionGral exc)
                     {
@@ -204,6 +244,19 @@ namespace UIForms
                             try
                             {
                                 this.cargarGridView(ASupermercado.listarTodasLasComprasPorUsuario(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value)));
+                            }
+                            catch (ExcepcionGral exc)
+                            {
+                                exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
+                                if (!Validaciones.EsVacio(exc.Message))
+                                    MessageBox.Show(exc.Message);
+                            }
+                        }
+                        else if (listadoDG.SelectedCells[0].OwningColumn.Name == "VerCanjes")
+                        {
+                            try
+                            {
+                                this.cargarGridView(ASupermercado.listarTodosLosCanjes(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value)));
                             }
                             catch (ExcepcionGral exc)
                             {
@@ -262,6 +315,50 @@ namespace UIForms
                         MessageBox.Show(exc.Message);
                 }
             }
+
+            //---- Opciones de Canjes
+            private void lCanjesTodos_Click(object sender, EventArgs e)
+            {
+                lTitulo.Text = " - Listado de todos los CANJES - ";
+                lTitulo.TextAlign = ContentAlignment.MiddleCenter;
+
+                try
+                {
+                    this.cargarGridView(ASupermercado.listarTodosLosCanjes());
+                }
+                catch (ExcepcionGral exc)
+                {
+                    exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
+                    if (!Validaciones.EsVacio(exc.Message))
+                        MessageBox.Show(exc.Message);
+                }
+            }
+
+            private void lCanjesCliente_Click(object sender, EventArgs e)
+            {
+                lTitulo.Text = " - Listado de todos los CANJES por CLIENTE - ";
+                lTitulo.TextAlign = ContentAlignment.MiddleCenter;
+                
+                try
+                {
+                    this.cargarGridView(ASupermercado.listarUsuarios());
+                    DataGridViewLinkColumn lc = new DataGridViewLinkColumn();
+                    lc.Name = "VerCanjes";
+                    lc.HeaderText = "";
+                    lc.Text = "Ver Canjes";
+                    lc.UseColumnTextForLinkValue = true;
+                    lc.ReadOnly = true;
+                    lc.Width = 100;
+                    listadoDG.Columns.Add(lc);
+                }
+                catch (ExcepcionGral exc)
+                {
+                    exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
+                    if (!Validaciones.EsVacio(exc.Message))
+                        MessageBox.Show(exc.Message);
+                }
+            }
+            //---- Fin Opciones de Canjes
 
         #endregion
 
@@ -397,7 +494,39 @@ namespace UIForms
                 }
             }
 
+            public void cargarGridView(List<Canje> listaCanjes)
+            {
+                listadoDG.Columns.Clear();
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Codigo");
+                dt.Columns.Add("Cliente");
+                dt.Columns.Add("Premio");
+                dt.Columns.Add("Fecha");
+                int i = 0;
+                string nombreCliente;
+                foreach (Canje c in listaCanjes)
+                {
+                    nombreCliente = c.Cliente.Apellido + ", " + c.Cliente.Nombre;
+                    dt.Rows.Add(new Object[]{
+                    "" });
+                    dt.Rows[i].SetField("Codigo", c.Codigo);
+                    dt.Rows[i].SetField("Cliente", nombreCliente);
+                    dt.Rows[i].SetField("Premio", c.Premio.Descripcion);
+                    dt.Rows[i].SetField("Fecha", c.Fecha);
+                    i++;
+                }
+                listadoDG.DataSource = dt;
+                listadoDG.AllowUserToOrderColumns = true;
+                //Bloquea las columnas para que no las puedan modificar
+                foreach (DataGridViewColumn c in listadoDG.Columns)
+                {
+                    c.ReadOnly = true;
+                }
+            }
+
+
         #endregion
+
 
     }
 }

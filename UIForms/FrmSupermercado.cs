@@ -118,13 +118,37 @@ namespace UIForms
                 }
             }
 
+            private void lUsuariosP_Click(object sender, EventArgs e)
+            {
+                lTitulo.Text = " - Listado de USUARIOS - ";
+                lTitulo.TextAlign = ContentAlignment.MiddleCenter;
+
+                try
+                {
+                    this.cargarGridView(ASupermercado.listarUsuariosPrivilegiados());
+                }
+                catch (ExcepcionGral exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
         //---- Fin Opciones de Usuarios
 
        //Opciones de menú relacionadas a los premios ----
 
-            private void lPremio_Click(object sender, EventArgs e)
+            private void nPremio_Click(object sender, EventArgs e)
             {
                 lTitulo.Text = " - Listado de PREMIOS - ";
+                lTitulo.TextAlign = ContentAlignment.MiddleCenter;
+                FrmPremio frmNuevoPremio = new FrmPremio();
+                frmNuevoPremio.ShowDialog();
+                this.lPremiosActivos_Click(null, null);
+            }
+
+            private void lPremiosActivos_Click(object sender, EventArgs e)
+            {
+                lTitulo.Text = " - Listado de PREMIOS ACTIVOS - ";
                 lTitulo.TextAlign = ContentAlignment.MiddleCenter;
                 try
                 {
@@ -146,13 +170,20 @@ namespace UIForms
                 }
             }
 
-            private void nPremio_Click(object sender, EventArgs e)
+            private void lPremiosInactivos_Click(object sender, EventArgs e)
             {
-                lTitulo.Text = " - Listado de PREMIOS - ";
+                lTitulo.Text = " - Listado de PREMIOS INACTIVOS - ";
                 lTitulo.TextAlign = ContentAlignment.MiddleCenter;
-                FrmPremio frmNuevoPremio = new FrmPremio();
-                frmNuevoPremio.ShowDialog();
-                this.lPremio_Click(null, null);
+                try
+                {
+                    this.cargarGridView(ASupermercado.listarPremiosInactivos());
+                }
+                catch (ExcepcionGral exc)
+                {
+                    exc.AgregarError("NO SE PUDO LISTAR LO PEDIDO");
+                    if (!Validaciones.EsVacio(exc.Message))
+                        MessageBox.Show(exc.Message);
+                }
             }
 
         //---- Fin Opciones de Premios
@@ -237,7 +268,7 @@ namespace UIForms
                             FrmPremioEdicion frmEditarPre = new FrmPremioEdicion();
                             frmEditarPre.Premio = ASupermercado.traerPremio(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Codigo"].Value));
                             frmEditarPre.ShowDialog();
-                            this.lPremio_Click(null, null);
+                            this.lPremiosActivos_Click(null, null);
                         }
                         else if (listadoDG.SelectedCells[0].OwningColumn.Name == "VerCompras")
                         {
@@ -526,7 +557,5 @@ namespace UIForms
 
 
         #endregion
-
-
     }
 }

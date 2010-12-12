@@ -546,6 +546,19 @@ namespace Logic
                 { throw exc; }
             }
 
+            public static List<Premio> listarPremiosInactivos()
+            {
+                try
+                {
+                    DBPremio db = new DBPremio();
+                    DataSet ds = db.listarInactivos();
+                    List<Premio> premios = ASupermercado.crearListaPremios(ds);
+                    return premios;
+                }
+                catch (ExcepcionGral exc)
+                { throw exc; }
+            }
+
             //---- Fin Consultas de Premios
 
             //Consultas de Compras 

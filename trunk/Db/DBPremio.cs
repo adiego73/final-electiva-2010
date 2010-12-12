@@ -264,6 +264,36 @@ namespace Db
                 }
             }
 
+            public DataSet listarInactivos()
+            {
+                SqlConnection conn = null;
+                try
+                {
+                    try
+                    {
+                        conn = new SqlConnection(DBGeneral.StrConn);
+                        conn.Open();
+                    }
+                    catch (SqlException e)
+                    {
+                        ExcepcionGral exc = new ExcepcionGral();
+                        exc.AgregarError("SE PRODUJO UN ERROR AL INTENTAR CONECTAR CON LA DB -- " + e.Message, TipoError.ERRCONEXION);
+                        throw exc;
+                    }
+                    string sql = "SELECT * FROM Premio WHERE PRE_Estado = 'Inactivo';";
+                    DataSet ds;
+                    ParaDB.EjecutarConsulta(sql, conn, out ds);
+                    conn.Close();
+                    return ds;
+                }
+                catch (ExcepcionGral exc)
+                {
+                    conn.Close();
+                    throw exc;
+                }
+            }
+
+
         #endregion
 
         #region Destructores

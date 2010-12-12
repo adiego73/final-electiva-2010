@@ -262,6 +262,29 @@ namespace Db
                 }
             }
 
+            public DataSet traerInactivos()
+            {
+                /*
+                 * Este método recupera todos los clientes Inactivos.
+                 */
+                SqlConnection conn = null;
+                try
+                {
+                    conn = new SqlConnection(DBGeneral.StrConn);
+                    conn.Open();
+                    string sql = "SELECT * FROM Cliente c WHERE c.CLI_Dni NOT IN (SELECT CLI_Dni FROM Usuario u WHERE u.CLI_Dni != 00000000);";
+
+                    DataSet ds;
+                    ParaDB.EjecutarConsulta(sql, conn, out ds);
+                    conn.Close();
+                    return ds;
+                }
+                catch (ExcepcionGral exc)
+                {
+                    this.Dispose();
+                    throw exc;
+                }
+            }
         #endregion
      
         #region Destructores

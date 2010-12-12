@@ -372,6 +372,20 @@ namespace Logic
                 { throw exc; }
             }
 
+            public static List<Cliente> traerClientesInactivos()
+            {
+                try
+                {
+                    DBCliente db = new DBCliente();
+                    DataSet dsCli = db.traerInactivos();
+                    if (dsCli != null)
+                        return ASupermercado.crearListaClientes(dsCli);
+                    else
+                        return null;
+                }
+                catch (ExcepcionGral exc)
+                { throw exc; }
+            }
         //---- Fin Consultas de Clientes
 
         //Consultas de Usuarios

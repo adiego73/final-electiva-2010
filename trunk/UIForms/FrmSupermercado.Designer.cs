@@ -39,10 +39,15 @@
             this.vaciar = new System.Windows.Forms.ToolStripMenuItem();
             this.listarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.lClientesActivos = new System.Windows.Forms.ToolStripMenuItem();
+            this.lClientesInactivos = new System.Windows.Forms.ToolStripMenuItem();
             this.lPremio = new System.Windows.Forms.ToolStripMenuItem();
             this.lCompra = new System.Windows.Forms.ToolStripMenuItem();
             this.lCompraTodas = new System.Windows.Forms.ToolStripMenuItem();
             this.lCompraCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.canjesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lCanjesTodos = new System.Windows.Forms.ToolStripMenuItem();
+            this.lCanjesCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDG = new System.Windows.Forms.DataGridView();
             this.lTitulo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -67,7 +72,7 @@
             this.cerrar,
             this.vaciar});
             this.archivo.Name = "archivo";
-            this.archivo.Size = new System.Drawing.Size(55, 20);
+            this.archivo.Size = new System.Drawing.Size(60, 20);
             this.archivo.Text = "Archivo";
             // 
             // nuevo
@@ -78,48 +83,48 @@
             this.nPremio,
             this.nCompra});
             this.nuevo.Name = "nuevo";
-            this.nuevo.Size = new System.Drawing.Size(152, 22);
+            this.nuevo.Size = new System.Drawing.Size(109, 22);
             this.nuevo.Text = "Nuevo";
             // 
             // nCliente
             // 
             this.nCliente.Name = "nCliente";
-            this.nCliente.Size = new System.Drawing.Size(162, 22);
+            this.nCliente.Size = new System.Drawing.Size(159, 22);
             this.nCliente.Text = "Cliente";
             this.nCliente.Click += new System.EventHandler(this.nCliente_Click);
             // 
             // nUsuarioEspecial
             // 
             this.nUsuarioEspecial.Name = "nUsuarioEspecial";
-            this.nUsuarioEspecial.Size = new System.Drawing.Size(162, 22);
+            this.nUsuarioEspecial.Size = new System.Drawing.Size(159, 22);
             this.nUsuarioEspecial.Text = "Usuario Especial";
             this.nUsuarioEspecial.Click += new System.EventHandler(this.nUsuarioEspecial_Click);
             // 
             // nPremio
             // 
             this.nPremio.Name = "nPremio";
-            this.nPremio.Size = new System.Drawing.Size(162, 22);
+            this.nPremio.Size = new System.Drawing.Size(159, 22);
             this.nPremio.Text = "Premio";
             this.nPremio.Click += new System.EventHandler(this.nPremio_Click);
             // 
             // nCompra
             // 
             this.nCompra.Name = "nCompra";
-            this.nCompra.Size = new System.Drawing.Size(162, 22);
+            this.nCompra.Size = new System.Drawing.Size(159, 22);
             this.nCompra.Text = "Compra";
             this.nCompra.Click += new System.EventHandler(this.nCompra_Click);
             // 
             // cerrar
             // 
             this.cerrar.Name = "cerrar";
-            this.cerrar.Size = new System.Drawing.Size(152, 22);
+            this.cerrar.Size = new System.Drawing.Size(109, 22);
             this.cerrar.Text = "Cerrar";
             this.cerrar.Click += new System.EventHandler(this.cerrar_Click);
             // 
             // vaciar
             // 
             this.vaciar.Name = "vaciar";
-            this.vaciar.Size = new System.Drawing.Size(152, 22);
+            this.vaciar.Size = new System.Drawing.Size(109, 22);
             this.vaciar.Text = "Vaciar";
             this.vaciar.Click += new System.EventHandler(this.vaciar_Click);
             // 
@@ -128,22 +133,39 @@
             this.listarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lCliente,
             this.lPremio,
-            this.lCompra});
+            this.lCompra,
+            this.canjesToolStripMenuItem});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            this.listarToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.listarToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.listarToolStripMenuItem.Text = "Listar";
             // 
             // lCliente
             // 
+            this.lCliente.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lClientesActivos,
+            this.lClientesInactivos});
             this.lCliente.Name = "lCliente";
-            this.lCliente.Size = new System.Drawing.Size(127, 22);
+            this.lCliente.Size = new System.Drawing.Size(152, 22);
             this.lCliente.Text = "Clientes";
-            this.lCliente.Click += new System.EventHandler(this.lCliente_Click);
+            // 
+            // lClientesActivos
+            // 
+            this.lClientesActivos.Name = "lClientesActivos";
+            this.lClientesActivos.Size = new System.Drawing.Size(152, 22);
+            this.lClientesActivos.Text = "Activos";
+            this.lClientesActivos.Click += new System.EventHandler(this.lClientesActivos_Click);
+            // 
+            // lClientesInactivos
+            // 
+            this.lClientesInactivos.Name = "lClientesInactivos";
+            this.lClientesInactivos.Size = new System.Drawing.Size(152, 22);
+            this.lClientesInactivos.Text = "Inactivos";
+            this.lClientesInactivos.Click += new System.EventHandler(this.lClientesInactivos_Click);
             // 
             // lPremio
             // 
             this.lPremio.Name = "lPremio";
-            this.lPremio.Size = new System.Drawing.Size(127, 22);
+            this.lPremio.Size = new System.Drawing.Size(152, 22);
             this.lPremio.Text = "Premios";
             this.lPremio.Click += new System.EventHandler(this.lPremio_Click);
             // 
@@ -153,22 +175,45 @@
             this.lCompraTodas,
             this.lCompraCliente});
             this.lCompra.Name = "lCompra";
-            this.lCompra.Size = new System.Drawing.Size(127, 22);
+            this.lCompra.Size = new System.Drawing.Size(152, 22);
             this.lCompra.Text = "Compras";
             // 
             // lCompraTodas
             // 
             this.lCompraTodas.Name = "lCompraTodas";
-            this.lCompraTodas.Size = new System.Drawing.Size(137, 22);
+            this.lCompraTodas.Size = new System.Drawing.Size(132, 22);
             this.lCompraTodas.Text = "Todas";
             this.lCompraTodas.Click += new System.EventHandler(this.lCompraTodas_Click);
             // 
             // lCompraCliente
             // 
             this.lCompraCliente.Name = "lCompraCliente";
-            this.lCompraCliente.Size = new System.Drawing.Size(137, 22);
+            this.lCompraCliente.Size = new System.Drawing.Size(132, 22);
             this.lCompraCliente.Text = "Por Cliente";
             this.lCompraCliente.Click += new System.EventHandler(this.lCompraCliente_Click);
+            // 
+            // canjesToolStripMenuItem
+            // 
+            this.canjesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lCanjesTodos,
+            this.lCanjesCliente});
+            this.canjesToolStripMenuItem.Name = "canjesToolStripMenuItem";
+            this.canjesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.canjesToolStripMenuItem.Text = "Canjes";
+            // 
+            // lCanjesTodos
+            // 
+            this.lCanjesTodos.Name = "lCanjesTodos";
+            this.lCanjesTodos.Size = new System.Drawing.Size(132, 22);
+            this.lCanjesTodos.Text = "Todos";
+            this.lCanjesTodos.Click += new System.EventHandler(this.lCanjesTodos_Click);
+            // 
+            // lCanjesCliente
+            // 
+            this.lCanjesCliente.Name = "lCanjesCliente";
+            this.lCanjesCliente.Size = new System.Drawing.Size(132, 22);
+            this.lCanjesCliente.Text = "Por Cliente";
+            this.lCanjesCliente.Click += new System.EventHandler(this.lCanjesCliente_Click);
             // 
             // listadoDG
             // 
@@ -228,5 +273,10 @@
         private System.Windows.Forms.ToolStripMenuItem vaciar;
         private System.Windows.Forms.ToolStripMenuItem lCompraTodas;
         private System.Windows.Forms.ToolStripMenuItem lCompraCliente;
+        private System.Windows.Forms.ToolStripMenuItem canjesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lCanjesTodos;
+        private System.Windows.Forms.ToolStripMenuItem lCanjesCliente;
+        private System.Windows.Forms.ToolStripMenuItem lClientesActivos;
+        private System.Windows.Forms.ToolStripMenuItem lClientesInactivos;
     }
 }

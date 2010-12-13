@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace Logic
 {
-    public class Usuario
+    public abstract class Usuario
     {
         #region Atributos
 

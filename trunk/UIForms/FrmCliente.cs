@@ -166,17 +166,41 @@ namespace UIForms
                         exc.AgregarError("El nombre no puede quedar en blanco");
                         errNombreLB.Visible = true;
                     }
+                    else 
+                    {
+                        if (Validaciones.EsLong(nombreTX.Text))
+                        {
+                            exc.AgregarError("El nombre no puede contener valores numéricos");
+                            errNombreLB.Visible = true;
+                        }
+                    }
 
                     if (Validaciones.EsVacio(apellidoTX.Text))
                     {
                         exc.AgregarError("El apellido no puede quedar en blanco");
                         errApellidoLB.Visible = true;
                     }
+                    else 
+                    {
+                        if (Validaciones.EsLong(apellidoTX.Text))
+                        {
+                            exc.AgregarError("El apellido no puede contener valores numéricos");
+                            errApellidoLB.Visible = true;
+                        }
+                    }
 
                     if (Validaciones.EsVacio(telefonoTX.Text))
                     {
                         exc.AgregarError("El teléfono no puede quedar en blanco");
                         errTelefonoLB.Visible = true;
+                    }
+                    else
+                    {
+                        if (!Validaciones.EsLong(telefonoTX.Text))
+                        {
+                            exc.AgregarError("El número de teléfono debe ser numérico");
+                            errTelefonoLB.Visible = true;
+                        }
                     }
 
                     if (Validaciones.EsVacio(direccionTX.Text))

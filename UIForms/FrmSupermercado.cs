@@ -252,9 +252,13 @@ namespace UIForms
                         try
                         {
                             FrmCompra frmNuevaCompra = new FrmCompra();
-                            frmNuevaCompra.Cliente = ASupermercado.traerCliente(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value));
+                            Cliente cliente = ASupermercado.traerCliente(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value));
+                            frmNuevaCompra.Cliente = cliente;
+                            //frmNuevaCompra.Cliente = ASupermercado.traerCliente(Conversiones.AInt(listadoDG.SelectedCells[0].OwningRow.Cells["Dni"].Value));
                             frmNuevaCompra.ShowDialog();
-                            this.lCompraTodas_Click(null, null);
+                            //this.lCompraTodas_Click(null, null);
+                            lTitulo.Text = " - Listado de todas las COMPRAS por CLIENTE - ";
+                            this.cargarGridView(ASupermercado.listarTodasLasComprasPorUsuario(cliente.Dni));
                         }
                         catch (ExcepcionGral exc)
                         {
